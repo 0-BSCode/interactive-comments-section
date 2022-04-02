@@ -2,7 +2,7 @@ import React from 'react'
 import profileImg from '../../images/avatars/image-amyrobson.png'
 import './Form.css'
 
-const Form = () => {
+const Form = ({reply}) => {
   return (
     <form className="form">
         <textarea 
@@ -15,11 +15,15 @@ const Form = () => {
             <button 
                 className="form__footerBtn"
                 type="submit">
-                Send
+                {reply? "Reply": "Send"}
             </button>
         </div>
     </form>
   )
+}
+
+Form.defaultProps = {
+    reply: false
 }
 
 export default Form
