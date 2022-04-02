@@ -2,6 +2,7 @@ import './App.css';
 import Comments from './components/Comments/Comments'
 import Form from './components/Form/Form'
 import Footer from './components/Footer/Footer'
+import Modal from './components/Modal/Modal'
 
 function App() {
 
