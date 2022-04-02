@@ -1,4 +1,5 @@
 import React from 'react'
+import './CommentBody.css'
 
 const CommentBody = () => {
   return (

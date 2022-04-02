@@ -38,3 +38,18 @@ body {
   min-height: 100vh;
   display: block;
 }
+
+h3, p {
+  font-size: 1rem;
+  letter-spacing: 0.01rem;
+}
+
+p {
+  color: var(--gray-blue);
+  line-height: 1.3rem;
+  font-size: 0.95rem;
+}
+
+button {
+  font-weight: var(--font-700);
+}

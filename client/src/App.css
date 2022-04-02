@@ -1,7 +1,9 @@
-.App {
-  text-align: center;
+.app {
+  min-height: 100vh;
 }
 
-.App__main {
-  
+.app__main {
+  width: 21.5rem;
+  margin: 1.5rem auto;
+
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import profileImg from '../../../images/avatars/image-amyrobson.png';
+import './CommentHeader.css'
 
 const CommentHeader = () => {
   return (

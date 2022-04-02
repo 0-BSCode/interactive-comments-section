@@ -1,0 +1,9 @@
+.thread {
+    padding-bottom: 1rem;
+}
+
+.thread__comment {
+    background-color: var(--white);
+    border-radius: 0.6rem;
+    padding: 1rem;
+}

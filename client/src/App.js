@@ -7,8 +7,8 @@ import Modal from './components/Modal/Modal'
 function App() {
 
   return (
-    <div className="App">
-      <main className="App__main">
+    <div className="app">
+      <main className="app__main">
         <Comments />
         <Form />
       </main>
