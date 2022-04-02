@@ -8,16 +8,17 @@ const CommentFooter = () => {
   return (
     <div className="footer">
         <span className="footer__likes">
-            <button className="footer__vote">
-                <img 
+            <button className="footer__vote footer__voteUp">
+                {/* {addImg} */}
+                {/* <img 
                     src={addImg} 
-                    className="footer__voteImg"/>
+                    className="footer__voteImg"/> */}
             </button>
             <p className="footer__likeCount">12</p>
-            <button className="footer__vote">
-                <img 
+            <button className="footer__vote footer__voteDown">
+                {/* <img 
                     src={subtractImg} 
-                    className="footer__voteImg"/>
+                    className="footer__voteImg"/> */}
             </button>
         </span>
         <button className="footer__reply">
