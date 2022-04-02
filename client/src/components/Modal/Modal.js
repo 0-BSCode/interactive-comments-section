@@ -3,7 +3,7 @@ import './Modal.css'
 
 const Modal = () => {
   return (
-    <dialog open className="modal">
+    <dialog className="modal">
         <h3 className="modal__header">
             Delete comment
         </h3>
