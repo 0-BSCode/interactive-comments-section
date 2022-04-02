@@ -23,6 +23,11 @@
   --light-gray: hsl(223, 19%, 93%);
   --vlight-gray: hsl(228, 33%, 97%);
   --white: hsl(0, 0%, 100%);
+
+  /* Font weights */
+  --font-400: 400;
+  --font-500: 500;
+  --font-700: 700;
 }
 
 body {
