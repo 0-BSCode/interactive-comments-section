@@ -1,12 +1,13 @@
 import React from 'react'
 import profileImg from '../../images/avatars/image-amyrobson.png'
+import './Form.css'
 
 const Form = () => {
   return (
     <form className="form">
-        <input 
+        <textarea 
             className="form__input"
-            type="text" />
+            placeholder="Add a comment..." />
         <div className="form__footer">
             <img 
                 src={profileImg} 

@@ -4,6 +4,6 @@
 
 .thread__comment {
     background-color: var(--white);
-    border-radius: 0.6rem;
+    border-radius: 0.5rem;
     padding: 1rem;
 }
