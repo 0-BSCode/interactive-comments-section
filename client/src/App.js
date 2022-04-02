@@ -20,3 +20,11 @@ function App() {
 export default App;
 
 // Reply -> Replies -> Comment -> Comments
+
+/*
+
+LEARNINGS:
+1. Dynamic image imports (place them in public folder)
+2. Dialog tag in HTML for modals
+
+*/
