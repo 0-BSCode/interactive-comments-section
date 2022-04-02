@@ -1,0 +1,20 @@
+.attribution {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.attribution__text {
+    font-size: 0.75rem;
+}
+
+.attribution__text a {
+    text-decoration: none;
+    color: var(--moderate-blue);
+    transition: 0.2s;
+}
+
+.attribution__text a:hover {
+    color: black;
+    cursor: pointer;
+}
