@@ -1,5 +1,4 @@
 import React from 'react'
-import profileImg from '../../images/avatars/image-amyrobson.png'
 import './Form.css'
 
 const Form = ({reply}) => {
@@ -10,7 +9,7 @@ const Form = ({reply}) => {
             placeholder="Add a comment..." />
         <div className="form__footer">
             <img 
-                src={profileImg} 
+                src={'../images/avatars/image-amyrobson.png'} 
                 className="form__footerImg" />
             <button 
                 className="form__footerBtn"
