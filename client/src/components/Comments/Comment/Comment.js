@@ -6,6 +6,7 @@ import './Comment.css'
 
 const Comment = ({comment}) => {
 
+  console.log(comment);
   return (
     <section className="thread">
         <article className="thread__comment">
@@ -14,8 +15,8 @@ const Comment = ({comment}) => {
               createdAt={comment.createdAt}
               imgSource={'.' + comment.user.image.png}
             />
-            <CommentBody />
-            <CommentFooter />
+            <CommentBody content={comment.content}/>
+            <CommentFooter likeCount={comment.score} />
         </article>  
     </section>
   )
