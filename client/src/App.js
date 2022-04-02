@@ -8,6 +8,7 @@ function App() {
 
   return (
     <div className="app">
+      <Modal />
       <main className="app__main">
         <Comments />
         <Form />

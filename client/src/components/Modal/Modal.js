@@ -1,8 +1,9 @@
 import React from 'react'
+import './Modal.css'
 
 const Modal = () => {
   return (
-    <dialog className="modal">
+    <dialog open className="modal">
         <h3 className="modal__header">
             Delete comment
         </h3>
@@ -11,10 +12,10 @@ const Modal = () => {
             comment and can't be undone.
         </p>
         <div className="modal__btnContainer">
-            <button className="modal__cancelBtn">
+            <button className="modal__btn modal__cancelBtn">
                 No, cancel
             </button>
-            <button className="modal__approveBtn">
+            <button className="modal__btn modal__approveBtn">
                 Yes, delete
             </button>
         </div>

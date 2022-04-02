@@ -39,6 +39,10 @@ body {
   display: block;
 }
 
+h3 {
+  color: var(--dark-blue);
+}
+
 h3, p {
   font-size: 1rem;
   letter-spacing: 0.01rem;
