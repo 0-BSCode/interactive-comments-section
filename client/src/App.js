@@ -1,14 +1,14 @@
 import './App.css';
-import profileImg from './images/avatars/image-amyrobson.png';
-import addImg from './images/icon-plus.svg';
-import subtractImg from './images/icon-minus.svg';
-import replyImg from './images/icon-reply.svg';
+import Comments from './components/Comments/Comments'
+import Form from './components/Form/Form'
 
 function App() {
 
   return (
     <div className="App">
-      <section>
+      <Comments />
+      <Form />
+      {/* <section>
         <article>
           <header>
             <img src={profileImg} />
@@ -142,7 +142,7 @@ function App() {
             Send
           </button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 }
