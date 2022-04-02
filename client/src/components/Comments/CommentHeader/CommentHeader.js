@@ -1,18 +1,18 @@
 import React from 'react'
-import profileImg from '../../../images/avatars/image-amyrobson.png';
 import './CommentHeader.css'
 
-const CommentHeader = () => {
+const CommentHeader = ({username, createdAt, imgSource}) => {
   return (
     <header className="header">
         <img
             className="header__img" 
-            src={profileImg} />
+            src={imgSource}
+            alt={`${username} profile picture`} />
         <h3 className="header__name">
-        amyrobson
+        {username}
         </h3>
         <p className="header__time">
-        1 month ago
+        {createdAt}
         </p>
     </header>
   )
