@@ -10,9 +10,10 @@ const Thread = ({comment, currentUser}) => {
         <Comment 
         comment={comment} 
         currentUser={currentUser} />
+        {comment.replies.length != 0?
         <Replies 
         replies={comment.replies}
-        currentUser={currentUser} />
+        currentUser={currentUser} />: ''}
     </section>
   )
 }
