@@ -1,5 +1,6 @@
 import React from 'react'
 import Comment from '../Comment/Comment'
+import './Replies.css'
 
 const Replies = ({replies, currentUser}) => {
   return (
