@@ -6,7 +6,10 @@ import './Comment.css'
 
 const Comment = ({comment}) => {
 
-  console.log(comment);
+  // console.log(comment.replies);
+  comment.replies.forEach(reply => {
+    console.log(reply);
+  })
   return (
     <section className="thread">
         <article className="thread__comment">
@@ -17,7 +20,21 @@ const Comment = ({comment}) => {
             />
             <CommentBody content={comment.content}/>
             <CommentFooter likeCount={comment.score} />
-        </article>  
+        </article>
+        <div className="thread__replies">
+          <div className="thread__repliesBorder" />
+          {comment.replies.map(reply => (
+          <article className="thread__comment">
+            <CommentHeader 
+              username={reply.user.username}
+              createdAt={reply.createdAt}
+              imgSource={'.' + reply.user.image.png}
+            />
+            <CommentBody content={reply.content}/>
+            <CommentFooter likeCount={reply.score} />
+          </article>        
+          ))}
+        </div>
     </section>
   )
 }
