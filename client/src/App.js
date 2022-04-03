@@ -20,6 +20,7 @@ function App() {
 export default App;
 
 // Reply -> Replies -> Comment -> Comments
+// BRUH IT'S THE YT COMMENT SYSTEM NOT REDDIT
 
 /*
 
