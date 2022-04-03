@@ -1,7 +1,7 @@
 import React from 'react'
-import './CommentBody.css'
+import './Body.css'
 
-const CommentBody = ({content}) => {
+const Body = ({content}) => {
   return (
     <p className="body">
       {content}
@@ -9,4 +9,4 @@ const CommentBody = ({content}) => {
   )
 }
 
-export default CommentBody
+export default Body

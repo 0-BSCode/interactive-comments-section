@@ -1,16 +1,24 @@
 import React from 'react'
-import './CommentHeader.css'
+import './Header.css'
 
-const CommentHeader = ({username, createdAt, imgSource}) => {
+const Header = ({username, createdAt, imgSource, isYou}) => {
+
   return (
     <header className="header">
         <img
             className="header__img" 
             src={imgSource}
             alt={`${username} profile picture`} />
-        <h3 className="header__name">
+        <h3 className="header__name"> 
         {username}
         </h3>
+        {
+          isYou? 
+          <span className="header__you">
+            You
+          </span>:
+          ''
+        }
         <p className="header__time">
         {createdAt}
         </p>
@@ -18,4 +26,4 @@ const CommentHeader = ({username, createdAt, imgSource}) => {
   )
 }
 
-export default CommentHeader
+export default Header

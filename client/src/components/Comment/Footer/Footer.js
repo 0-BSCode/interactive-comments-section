@@ -1,8 +1,8 @@
 import React from 'react'
 import replyImg from '../../../images/icon-reply.svg';
-import './CommentFooter.css'
+import './Footer.css'
 
-const CommentFooter = ({likeCount}) => {
+const Footer = ({likeCount}) => {
   return (
     <div className="footer">
         <span className="footer__likes">
@@ -20,4 +20,4 @@ const CommentFooter = ({likeCount}) => {
   )
 }
 
-export default CommentFooter
+export default Footer

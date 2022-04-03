@@ -1,7 +1,9 @@
 import React from 'react'
 import './Form.css'
+import data from '../../data.json'
 
-const Form = ({reply}) => {
+const Form = ({isReply}) => {
+  console.log(data.currentUser);
   return (
     <form className="form">
         <textarea 
@@ -9,12 +11,12 @@ const Form = ({reply}) => {
             placeholder="Add a comment..." />
         <div className="form__footer">
             <img 
-                src={'../images/avatars/image-amyrobson.png'} 
+                src={`.${data.currentUser.image.png}`} 
                 className="form__footerImg" />
             <button 
                 className="form__footerBtn"
                 type="submit">
-                {reply? "Reply": "Send"}
+                {isReply? "Reply": "Send"}
             </button>
         </div>
     </form>
@@ -22,7 +24,7 @@ const Form = ({reply}) => {
 }
 
 Form.defaultProps = {
-    reply: false
+    isReply: false
 }
 
 export default Form

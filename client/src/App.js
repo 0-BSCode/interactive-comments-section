@@ -1,5 +1,5 @@
 import './App.css';
-import Comments from './components/Comments/Comments'
+import Threads from './components/Threads/Threads'
 import Form from './components/Form/Form'
 import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
@@ -9,7 +9,7 @@ function App() {
     <div className="app">
       <Modal />
       <main className="app__main">
-        <Comments />
+        <Threads />
         <Form />
       </main>
       <Footer />
