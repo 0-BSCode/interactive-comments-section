@@ -1,3 +1,7 @@
 .body {
     margin: 1.1rem 0;
 }
+
+.body__addressee {
+    color: var(--moderate-blue);
+}

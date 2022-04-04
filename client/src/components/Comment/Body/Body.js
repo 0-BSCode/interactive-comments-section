@@ -1,10 +1,17 @@
 import React from 'react'
 import './Body.css'
 
-const Body = ({content}) => {
+const Body = ({content, replyingTo}) => {
   return (
     <p className="body">
-      {content}
+      {replyingTo != ''? 
+      <>
+        <b className="body__addressee">
+          {`@${replyingTo} `}
+        </b>
+        {content}
+      </>:
+      content}
     </p>
   )
 }

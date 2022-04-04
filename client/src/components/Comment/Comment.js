@@ -5,7 +5,7 @@ import Footer from './Footer/Footer'
 import './Comment.css'
 
 const Comment = ({comment, currentUser, isReply}) => {
-
+  console.log(comment);
   return (
     <article className="comment">
         <Header 
@@ -16,7 +16,7 @@ const Comment = ({comment, currentUser, isReply}) => {
         />
         <Body 
         content={comment.content}
-        replyingTo={isReply? comment.user.username: ''} />
+        replyingTo={isReply? comment.replyingTo: ''} />
         <Footer 
         likeCount={comment.score} 
         currentUser={currentUser}
