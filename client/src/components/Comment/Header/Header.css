@@ -10,9 +10,15 @@
 }
 
 .header__you {
-    padding: 0.2rem;
+    padding: 0.15rem 0.3rem;
     font-size: 0.8rem;
+    border-radius: 0.2rem;
     color: var(--white);
     background-color: var(--moderate-blue);
     text-transform: lowercase;
+    margin-left: 0.5rem;
+}
+
+.header--you {
+    width: 91% !important;
 }

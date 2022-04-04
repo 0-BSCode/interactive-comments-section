@@ -12,7 +12,7 @@ const Comment = ({comment, currentUser, isReply}) => {
         username={comment.user.username}
         createdAt={comment.createdAt}
         imgSource={'.' + comment.user.image.png}
-        isYou={currentUser.username == comment.user.username? true: false}
+        isYou={currentUser.username === comment.user.username}
         />
         <Body 
         content={comment.content}
