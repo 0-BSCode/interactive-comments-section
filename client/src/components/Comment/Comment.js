@@ -19,8 +19,7 @@ const Comment = ({comment, currentUser, isReply}) => {
         replyingTo={isReply? comment.replyingTo: ''} />
         <Footer 
         likeCount={comment.score} 
-        currentUser={currentUser}
-        isYou={currentUser.username == comment.user.username? true: false}
+        isYou={currentUser.username === comment.user.username}
         />
     </article>
   )

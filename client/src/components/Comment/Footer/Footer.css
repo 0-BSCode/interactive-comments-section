@@ -5,13 +5,13 @@
 }
 
 .footer__likes,
-.footer__reply {
+.footer__btn {
     height: 2.5rem;
     border-radius: 0.6rem;
 }
 
 .footer__likes *,
-.footer__reply * {
+.footer__btn * {
     display: inline-block;
     color: var(--moderate-blue);
 }
@@ -64,20 +64,30 @@
     font-weight: var(--font-700);
 }
 
-.footer__reply {
+.footer__btnContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.footer__btn {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     background: none;
     border: none;
-    width: 5.5rem;
+    width: 4.2rem;
 }
 
-.footer__reply:hover {
+.footer__btn:hover {
     opacity: 0.4;
     cursor: pointer;
 }
 
-.footer__replyTxt {
+.footer__btnTxt {
     padding-left: 0.5rem;
+}
+
+.footer__deleteTxt {
+    color: var(--soft-red);
 }
