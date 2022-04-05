@@ -3,9 +3,8 @@ import './Form.css'
 import data from '../../data.json'
 
 const Form = ({isReply}) => {
-  console.log(data.currentUser);
   return (
-    <form className="form">
+    <form className={isReply? "form form--reply": "form"}>
         <textarea 
             className="form__input"
             placeholder="Add a comment..." />

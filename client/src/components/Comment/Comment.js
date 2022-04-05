@@ -2,12 +2,18 @@ import React from 'react'
 import Header from './Header/Header'
 import Body from './Body/Body'
 import Footer from './Footer/Footer'
+import Form from '../Form/Form'
+import {useState, useEffect} from 'react'
 import './Comment.css'
 
 const Comment = ({comment, currentUser, isReply}) => {
-  console.log(comment);
+  const [replyId, setReplyId] = useState(0);
+
   return (
-    <article className="comment">
+    <>
+    <article
+      className="comment"
+      id={comment.id}>
         <Header 
         username={comment.user.username}
         createdAt={comment.createdAt}
@@ -20,8 +26,15 @@ const Comment = ({comment, currentUser, isReply}) => {
         <Footer 
         likeCount={comment.score} 
         isYou={currentUser.username === comment.user.username}
+        btnId={comment.id}
+        setReplyId={setReplyId}
         />
     </article>
+    {
+      replyId == comment.id?
+      <Form isReply={true}/>: ''
+    }
+    </>
   )
 }
 

@@ -2,6 +2,11 @@
     background-color: var(--white);
     border-radius: 0.5rem;
     padding: 1rem;
+    width: 100%;
+}
+
+.form--reply {
+    margin-top: 1rem;
 }
 
 .form__input {

@@ -10,7 +10,8 @@ const Replies = ({replies, currentUser}) => {
             <Comment 
             comment={reply} 
             currentUser={currentUser}
-            isReply={true} />
+            isReply={true}
+            key={reply.id} />
         ))}
     </div>
   )
