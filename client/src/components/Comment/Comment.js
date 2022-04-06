@@ -7,8 +7,7 @@ import {useState, useEffect} from 'react'
 import './Comment.css'
 
 const Comment = ({comment, currentUser, replyId, setReplyId, isReply}) => {
-  const [toggleReply, setToggleReply] = useState(false);
-
+  
   return (
     <>
     <article
@@ -24,16 +23,16 @@ const Comment = ({comment, currentUser, replyId, setReplyId, isReply}) => {
         content={comment.content}
         replyingTo={isReply? comment.replyingTo: ''} />
         <Footer 
+        commentId={comment.id}
         likeCount={comment.score} 
         isYou={currentUser.username === comment.user.username}
         btnId={comment.id}
-        toggleReply={toggleReply}
-        setToggleReply={setToggleReply}
+        replyId={replyId}
         setReplyId={setReplyId}
         />
     </article>
     {
-      toggleReply && replyId == comment.id?
+      replyId == comment.id?
       <Form isReply={true}/>: ''
     }
     </>

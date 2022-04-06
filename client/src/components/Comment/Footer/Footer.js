@@ -4,7 +4,7 @@ import deleteImg from '../../../images/icon-delete.svg'
 import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
 
-const Footer = ({likeCount, isYou, btnId, toggleReply, setToggleReply, setReplyId}) => {
+const Footer = ({likeCount, isYou, btnId, replyId, setReplyId}) => {
 
   const handleReply = e => {
     e.preventDefault();
@@ -14,11 +14,9 @@ const Footer = ({likeCount, isYou, btnId, toggleReply, setToggleReply, setReplyI
     if (id == null) {
       id = elem.parentElement.getAttribute('dataid');
     }
-
-    setReplyId(id);
-    console.log("ID: ", id)
-    setToggleReply(!toggleReply)
-  }
+    
+    id == replyId? setReplyId(0): setReplyId(id);
+}
 
   return (
     <div className="footer">
