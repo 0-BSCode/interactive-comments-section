@@ -33,7 +33,9 @@ const Comment = ({comment, currentUser, replyId, setReplyId, isReply}) => {
     </article>
     {
       replyId == comment.id?
-      <Form isReply={true}/>: ''
+      <Form 
+        replyingTo={comment.user.username}
+        setReplyId={setReplyId} />: ''
     }
     </>
   )
