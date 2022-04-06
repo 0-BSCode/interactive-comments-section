@@ -1,21 +1,19 @@
 import React from 'react'
 import Thread from './Thread/Thread'
-import data from '../../data.json'
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
 
 const Threads = () => {
   const comments = useSelector(state => state.comments)
-  const [replyId, setReplyId] = useState(0);
-
-  console.log(comments)
+  const currentUser = useSelector(state => state.currentUser)
+  const [replyId, setReplyId] = useState(0)
 
   return (
     <div className="comments">
-        {data.comments.map(comment => (
+        {comments.map(comment => (
           <Thread 
           comment={comment}
-          currentUser={data.currentUser}
+          currentUser={currentUser}
           replyId={replyId}
           setReplyId={setReplyId} 
           key={comment.id}
