@@ -7,7 +7,7 @@ import {useState, useEffect} from 'react'
 import './Comment.css'
 
 const Comment = ({comment, currentUser, isReply}) => {
-  const [replyId, setReplyId] = useState(0);
+  const [replyId, setReplyId] = useState(false);
 
   return (
     <>
@@ -27,11 +27,12 @@ const Comment = ({comment, currentUser, isReply}) => {
         likeCount={comment.score} 
         isYou={currentUser.username === comment.user.username}
         btnId={comment.id}
+        replyId={replyId}
         setReplyId={setReplyId}
         />
     </article>
     {
-      replyId == comment.id?
+      replyId?
       <Form isReply={true}/>: ''
     }
     </>

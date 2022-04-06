@@ -4,18 +4,18 @@ import deleteImg from '../../../images/icon-delete.svg'
 import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
 
-const Footer = ({likeCount, isYou, btnId, setReplyId}) => {
+const Footer = ({likeCount, isYou, btnId, replyId, setReplyId}) => {
 
   const toggleReply = e => {
     e.preventDefault();
-    const elem = e.target;
-    let id = elem.getAttribute('dataid');
+    // const elem = e.target;
+    // let id = elem.getAttribute('dataid');
 
-    if (id == null) {
-      id = elem.parentElement.getAttribute('dataid');
-    }
+    // if (id == null) {
+    //   id = elem.parentElement.getAttribute('dataid');
+    // }
 
-    setReplyId(id);
+    setReplyId(!replyId);
   }
 
   return (
