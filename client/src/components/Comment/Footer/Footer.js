@@ -4,18 +4,20 @@ import deleteImg from '../../../images/icon-delete.svg'
 import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
 
-const Footer = ({likeCount, isYou, btnId, replyId, setReplyId}) => {
+const Footer = ({likeCount, isYou, btnId, toggleReply, setToggleReply, setReplyId}) => {
 
-  const toggleReply = e => {
+  const handleReply = e => {
     e.preventDefault();
-    // const elem = e.target;
-    // let id = elem.getAttribute('dataid');
+    const elem = e.target;
+    let id = elem.getAttribute('dataid');
 
-    // if (id == null) {
-    //   id = elem.parentElement.getAttribute('dataid');
-    // }
+    if (id == null) {
+      id = elem.parentElement.getAttribute('dataid');
+    }
 
-    setReplyId(!replyId);
+    setReplyId(id);
+    console.log("ID: ", id)
+    setToggleReply(!toggleReply)
   }
 
   return (
@@ -49,7 +51,7 @@ const Footer = ({likeCount, isYou, btnId, replyId, setReplyId}) => {
           </div>:
           <button 
             className="footer__btn footer__reply"
-            onClick={toggleReply}
+            onClick={handleReply}
             dataid={btnId}>
               <img 
                   src={replyImg} 

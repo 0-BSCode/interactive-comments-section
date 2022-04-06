@@ -6,8 +6,8 @@ import Form from '../Form/Form'
 import {useState, useEffect} from 'react'
 import './Comment.css'
 
-const Comment = ({comment, currentUser, isReply}) => {
-  const [replyId, setReplyId] = useState(false);
+const Comment = ({comment, currentUser, replyId, setReplyId, isReply}) => {
+  const [toggleReply, setToggleReply] = useState(false);
 
   return (
     <>
@@ -27,12 +27,13 @@ const Comment = ({comment, currentUser, isReply}) => {
         likeCount={comment.score} 
         isYou={currentUser.username === comment.user.username}
         btnId={comment.id}
-        replyId={replyId}
+        toggleReply={toggleReply}
+        setToggleReply={setToggleReply}
         setReplyId={setReplyId}
         />
     </article>
     {
-      replyId?
+      toggleReply && replyId == comment.id?
       <Form isReply={true}/>: ''
     }
     </>

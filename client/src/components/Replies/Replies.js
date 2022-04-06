@@ -2,7 +2,7 @@ import React from 'react'
 import Comment from '../Comment/Comment'
 import './Replies.css'
 
-const Replies = ({replies, currentUser}) => {
+const Replies = ({replies, currentUser, replyId, setReplyId}) => {
   return (
     <div className="replies">
         <div className="replies__border" />
@@ -11,6 +11,8 @@ const Replies = ({replies, currentUser}) => {
             comment={reply} 
             currentUser={currentUser}
             isReply={true}
+            replyId={replyId}
+            setReplyId={setReplyId}
             key={reply.id} />
         ))}
     </div>
