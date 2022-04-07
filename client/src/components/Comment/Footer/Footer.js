@@ -5,7 +5,6 @@ import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateComment, deleteComment } from '../../../actions/comments'
-import { useEffect } from 'react'
 
 const Footer = ({comment, isYou, replyId, setReplyId}) => {
 
