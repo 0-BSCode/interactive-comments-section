@@ -44,16 +44,35 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
 
   const createComment = e => {
       e.preventDefault();
-    
-      if (replyingTo == '') {
+
+      if (replyingTo == '') { // Create a comment
         dispatch(addComment({...newComment, content: textInput}));
-      } else {
-        let threadOwner = replyingTo.replyingTo;
-        console.log(threadOwner);
+      } else { // Create a reply to a comment
+        // Remove username so it doesn't repeat
+        const updatedComment = {...newComment, content: textInput.split(' ').slice(1,)};
+        
+        // Check for comment that starts thread to determine to
+        // its 'replies' property
+        let parentComment = replyingTo;
+
+        comments.forEach(comment => {
+
+            // Check if reply is to a comment
+            if (comment.id == replyingTo.id) {
+                parentComment = comment
+            }
+
+            // Check if reply is to a reply
+            comment.replies.forEach(reply => {
+                if (reply.id == replyingTo.id) {
+                    parentComment = comment
+                }
+            })
+        })
+
+        console.log(parentComment)
         dispatch(updateComment(
-            {...replyingTo, replies: [...replyingTo["replies"], {
-                ...newComment, content: textInput
-            }]}
+            {...parentComment, replies: [...parentComment["replies"], updatedComment]}
         ))
       }
 
