@@ -6,7 +6,9 @@ import Form from '../Form/Form'
 import {useState, useEffect} from 'react'
 import './Comment.css'
 
-const Comment = ({comment, currentUser, replyId, setReplyId, isReply}) => {
+const Comment = ({comment, currentUser, 
+                  replyId, setReplyId, isReply,
+                  commentId, setCommentId}) => {
   
   return (
     <>
@@ -34,8 +36,10 @@ const Comment = ({comment, currentUser, replyId, setReplyId, isReply}) => {
     {
       replyId == comment.id?
       <Form 
-        replyingTo={comment.user.username}
-        setReplyId={setReplyId} />: ''
+        replyingTo={comment}
+        setReplyId={setReplyId}
+        commentId={commentId}
+        setCommentId={setCommentId} />: ''
     }
     </>
   )

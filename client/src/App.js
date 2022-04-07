@@ -3,14 +3,21 @@ import Threads from './components/Threads/Threads'
 import Form from './components/Form/Form'
 import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
+import {useState} from 'react'
 
 function App() {
+  const [commentId, setCommentId] = useState(5);
+
   return (
     <div className="app">
       <Modal />
       <main className="app__main">
-        <Threads />
-        <Form />
+        <Threads 
+        commentId={commentId}
+        setCommentId={setCommentId} />
+        <Form 
+        commentId={commentId}
+        setCommentId={setCommentId}/>
       </main>
       <Footer />
     </div>
@@ -19,8 +26,6 @@ function App() {
 
 export default App;
 
-// Reply -> Replies -> Comment -> Comments
-// BRUH IT'S THE YT COMMENT SYSTEM NOT REDDIT
 
 /*
 

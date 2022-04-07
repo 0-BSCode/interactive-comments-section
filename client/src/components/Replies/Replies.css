@@ -18,9 +18,13 @@
 
 /* Comment styles override */
 
+.replies .comment {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
 .replies .comment:last-child {
     margin-bottom: 0;
-    margin-top: 1rem;
 }
 
 .replies .comment .header {
