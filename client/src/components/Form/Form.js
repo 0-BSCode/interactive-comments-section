@@ -71,7 +71,6 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
             })
         })
 
-        console.log(parentComment)
         dispatch(updateComment(
             {...parentComment, replies: [...parentComment["replies"], updatedComment]}
         ))
