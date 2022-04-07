@@ -48,8 +48,9 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
       if (replyingTo == '') { // Create a comment
         dispatch(addComment({...newComment, content: textInput}));
       } else { // Create a reply to a comment
+        
         // Remove username so it doesn't repeat
-        const updatedComment = {...newComment, content: textInput.split(' ').slice(1,)};
+        const updatedComment = {...newComment, content: textInput.split(' ').slice(1,).join(' ')};
         
         // Check for comment that starts thread to add it to
         // its 'replies' property
