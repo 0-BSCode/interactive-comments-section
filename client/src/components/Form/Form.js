@@ -51,7 +51,7 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
         // Remove username so it doesn't repeat
         const updatedComment = {...newComment, content: textInput.split(' ').slice(1,)};
         
-        // Check for comment that starts thread to determine to
+        // Check for comment that starts thread to add it to
         // its 'replies' property
         let parentComment = replyingTo;
 
@@ -93,7 +93,7 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
 
   return (
     <form 
-        className={replyingTo != '' ? "form form--reply": "form"}
+        className="form"
         onSubmit={createComment}>
         <textarea 
             className="form__input"

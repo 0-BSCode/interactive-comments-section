@@ -1,3 +1,13 @@
 .thread {
     margin-bottom: 1rem;
 }
+
+/* Form styles override */
+.thread .form {
+    margin-top: 1rem;
+}
+
+.thread .replies .form {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
