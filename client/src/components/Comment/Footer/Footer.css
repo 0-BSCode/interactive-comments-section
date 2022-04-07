@@ -52,12 +52,24 @@
     cursor: pointer;
 }
 
+.footer__vote--disabled:hover {
+    cursor: default;
+}
+
 .footer__voteUp:hover {
     background-image: url("../../../images/icon-plus-hover.svg");
 }
 
+.footer__voteUp--disabled:hover {
+    background-image: url("../../../images/icon-plus.svg");
+}
+
 .footer__voteDown:hover {
     background-image: url("../../../images/icon-minus-hover.svg");
+}
+
+.footer__voteDown--disabled:hover {
+    background-image: url("../../../images/icon-minus.svg");
 }
 
 .footer__likeCount {

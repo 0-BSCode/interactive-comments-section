@@ -61,12 +61,30 @@ const Footer = ({comment, isYou, replyId, setReplyId}) => {
     e.preventDefault();
     let updatedComment = getUpdatedCount(1);
     dispatch(updateComment(updatedComment));
+
+    e.target.disabled = true;
+    e.target.classList.add('footer__vote--disabled');
+    e.target.classList.add('footer__voteUp--disabled');
+
+    const minusBtn = document.querySelector(`.footer__voteDown[dataid="${comment.id}"]`);
+    minusBtn.disabled = false;
+    minusBtn.classList.remove('footer__vote--disabled');
+    minusBtn.classList.remove('footer__voteDown--disabled');
   }
 
   const decrementScore = e => {
     e.preventDefault();
     let updatedComment = getUpdatedCount(-1);
     dispatch(updateComment(updatedComment));
+
+    e.target.disabled = true;
+    e.target.classList.add('footer__vote--disabled');
+    e.target.classList.add('footer__voteDown--disabled');
+
+    const plusBtn = document.querySelector(`.footer__voteUp[dataid="${comment.id}"]`);
+    plusBtn.disabled = false;
+    plusBtn.classList.remove('footer__vote--disabled');
+    plusBtn.classList.remove('footer__voteUp--disabled');
   }
 
   return (
