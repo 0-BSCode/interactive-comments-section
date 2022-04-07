@@ -1,7 +1,7 @@
 import React from 'react'
 import './Form.css'
 import {useSelector, useDispatch} from 'react-redux'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {addComment, updateComment} from '../../actions/comments'
 
 const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
@@ -48,7 +48,7 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
       if (replyingTo == '') { // Create a comment
         dispatch(addComment({...newComment, content: textInput}));
       } else { // Create a reply to a comment
-        
+
         // Remove username so it doesn't repeat
         const updatedComment = {...newComment, content: textInput.split(' ').slice(1,).join(' ')};
         
