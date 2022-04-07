@@ -32,5 +32,14 @@ export default App;
 LEARNINGS:
 1. Dynamic image imports (place them in public folder)
 2. Dialog tag in HTML for modals
+3. Managing complicated data in redux (updating object = overriding old object instead of changing specific properties)
 
+TO-DO:
+1. Popup delete modal
+2. Delete functionality
+3. Edit functionality
+4. Styling textarea during user input
+5. Responsive design
+6. Clean props and states (remove redundant ones)
+7. Modularize code (export some component functions for cleaner code)
 */
