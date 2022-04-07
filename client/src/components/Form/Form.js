@@ -100,3 +100,14 @@ Form.defaultProps = {
 }
 
 export default Form
+
+
+/*
+
+ISSUES:
+1. Newly generated reply repeats username
+    - Split input value and exclude the first element (username)
+    from being included in generated reply
+2. Replying to a reply breaks the code
+    - Iterate replyingTo property until it's null
+*/
