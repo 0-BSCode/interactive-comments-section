@@ -3,7 +3,6 @@ import Header from './Header/Header'
 import Body from './Body/Body'
 import Footer from './Footer/Footer'
 import Form from '../Form/Form'
-import {useState, useEffect} from 'react'
 import './Comment.css'
 
 const Comment = ({comment, currentUser, 
@@ -25,10 +24,8 @@ const Comment = ({comment, currentUser,
         content={comment.content}
         replyingTo={isReply? comment.replyingTo: ''} />
         <Footer 
-        commentId={comment.id}
-        likeCount={comment.score} 
+        comment={comment}
         isYou={currentUser.username === comment.user.username}
-        btnId={comment.id}
         replyId={replyId}
         setReplyId={setReplyId}
         />

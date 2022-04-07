@@ -3,36 +3,89 @@ import replyImg from '../../../images/icon-reply.svg'
 import deleteImg from '../../../images/icon-delete.svg'
 import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateComment, deleteComment } from '../../../actions/comments'
+import { useEffect } from 'react'
 
-const Footer = ({likeCount, isYou, btnId, replyId, setReplyId}) => {
+const Footer = ({comment, isYou, replyId, setReplyId}) => {
 
-  const handleReply = e => {
-    e.preventDefault();
-    const elem = e.target;
+  const comments = useSelector(state => state.comments);
+  const dispatch = useDispatch();
+
+  const getBtnId = elem => {
     let id = elem.getAttribute('dataid');
 
     if (id == null) {
       id = elem.parentElement.getAttribute('dataid');
     }
+
+    return id;
+  }
+
+  const getUpdatedCount = increment => {
+    let updatedComment;
+    comments.forEach(comm => {
+      if (comm.id == comment.id) {  // If comment
+        updatedComment = {...comment, score: comment.score + increment};
+      } 
+    })
+
+    // Execute only if comment to update is a reply
+    if (updatedComment == undefined) {
+      // If reply
+      comments.forEach(comm => {
+        let updatedReplies = [];
+        comm.replies.forEach(reply => {
+          if (reply.id == comment.id) {
+            updatedReplies.push({...comment, score: comment.score + increment});
+          } else {
+            updatedReplies.push(reply);
+          }
+        })
+        updatedComment = {...comm, replies: updatedReplies};
+      })
+    }
+
+    return updatedComment;
+  }
+
+  const handleReply = e => {
+    e.preventDefault();
+    const elem = e.target;
+    const elemId = getBtnId(elem);
     
-    id == replyId? setReplyId(0): setReplyId(id);
-}
+    elemId == replyId? setReplyId(0): setReplyId(elemId);
+  }
+
+  const incrementScore = e => {
+    e.preventDefault();
+    let updatedComment = getUpdatedCount(1);
+    dispatch(updateComment(updatedComment));
+  }
+
+  const decrementScore = e => {
+    e.preventDefault();
+    let updatedComment = getUpdatedCount(-1);
+    dispatch(updateComment(updatedComment));
+  }
 
   return (
     <div className="footer">
         <span className="footer__likes">
             <button 
             className="footer__vote footer__voteUp"
-            dataid={btnId} />
-            <p className="footer__likeCount">{likeCount}</p>
+            dataid={comment.id}
+            onClick={incrementScore} />
+            <p className="footer__likeCount">{comment.score}</p>
             <button className="footer__vote footer__voteDown"
-            dataid={btnId} />
+            dataid={comment.id}
+            onClick={decrementScore} />
         </span>
         {isYou?
           <div className="footer__btnContainer">
             <button 
             className="footer__btn footer__delete"
-            dataid={btnId}>
+            dataid={comment.id}>
               <img 
                   src={deleteImg} 
                   className="footer__btnImg footer__deleteImg" />
@@ -40,7 +93,7 @@ const Footer = ({likeCount, isYou, btnId, replyId, setReplyId}) => {
             </button>
             <button 
             className="footer__btn footer__edit"
-            dataid={btnId}>
+            dataid={comment.id}>
               <img 
                   src={editImg} 
                   className="footer__btnImg footer__editImg" />
@@ -50,7 +103,7 @@ const Footer = ({likeCount, isYou, btnId, replyId, setReplyId}) => {
           <button 
             className="footer__btn footer__reply"
             onClick={handleReply}
-            dataid={btnId}>
+            dataid={comment.id}>
               <img 
                   src={replyImg} 
                   className="footer__btnImg footer__replyImg" />
