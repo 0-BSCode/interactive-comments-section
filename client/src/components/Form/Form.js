@@ -4,14 +4,14 @@ import {useSelector, useDispatch} from 'react-redux'
 import {useState} from 'react'
 import {addComment, updateComment} from '../../actions/comments'
 
-const Form = ({replyingTo, replyBtnId, newCommentId}) => {
+const Form = ({replyFor, replyBtnId, newCommentId}) => {
   const currentUser = useSelector(state => state.currentUser)
   const comments = useSelector(state => state.comments)
   const dispatch = useDispatch()
 
-  const [textInput, setTextInput] = useState(replyingTo != ''? `@${replyingTo.user.username}`: '')
+  const [textInput, setTextInput] = useState(replyFor != ''? `@${replyFor.user.username} `: '')
   const [newComment, setNewComment] = useState(
-      replyingTo == ''?
+      replyFor == ''?
       {
         id: newCommentId.get,
         content: '',
@@ -31,7 +31,7 @@ const Form = ({replyingTo, replyBtnId, newCommentId}) => {
         content: '',
         createdAt: '1 minute ago',
         score: 0,
-        replyingTo: replyingTo.user.username,
+        replyingTo: replyFor.user.username,
         user: {
             image: {
               png: currentUser.image.png,
@@ -45,7 +45,7 @@ const Form = ({replyingTo, replyBtnId, newCommentId}) => {
   const createComment = e => {
       e.preventDefault();
 
-      if (replyingTo == '') { // Create a comment
+      if (replyFor == '') { // Create a comment
         dispatch(addComment({...newComment, content: textInput}));
       } else { // Create a reply to a comment
 
@@ -54,18 +54,18 @@ const Form = ({replyingTo, replyBtnId, newCommentId}) => {
         
         // Check for comment that starts thread to add it to
         // its 'replies' property
-        let parentComment = replyingTo;
+        let parentComment = replyFor;
 
         comments.forEach(comment => {
 
             // Check if reply is to a comment
-            if (comment.id == replyingTo.id) {
+            if (comment.id == replyFor.id) {
                 parentComment = comment
             }
 
             // Check if reply is to a reply
             comment.replies.forEach(reply => {
-                if (reply.id == replyingTo.id) {
+                if (reply.id == replyFor.id) {
                     parentComment = comment
                 }
             })
@@ -76,9 +76,9 @@ const Form = ({replyingTo, replyBtnId, newCommentId}) => {
         ))
       }
 
-      if (replyingTo != '') {
+      if (replyFor != '') {
           replyBtnId.set(0);
-          setTextInput(replyingTo.user.username);
+          setTextInput(replyFor.user.username);
       } else {
           setTextInput('');
       }
@@ -107,7 +107,7 @@ const Form = ({replyingTo, replyBtnId, newCommentId}) => {
             <button 
                 className="form__footerBtn"
                 type="submit">
-                {replyingTo != ''? "Reply": "Send"}
+                {replyFor != ''? "Reply": "Send"}
             </button>
         </div>
     </form>
@@ -115,7 +115,7 @@ const Form = ({replyingTo, replyBtnId, newCommentId}) => {
 }
 
 Form.defaultProps = {
-    replyingTo: '',
+    replyFor: '',
 }
 
 export default Form

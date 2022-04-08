@@ -32,6 +32,7 @@ const Comment = ({comment, replyBtnId, isReply, newCommentId}) => {
     {
       replyBtnId.get == comment.id?
       <Form 
+        replyFor={comment}
         replyBtnId={replyBtnId}
         newCommentId={newCommentId} />: ''
     }
