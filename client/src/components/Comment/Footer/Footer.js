@@ -6,7 +6,7 @@ import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateComment, deleteComment } from '../../../actions/comments'
 
-const Footer = ({comment, isYou, replyBtnId}) => {
+const Footer = ({comment, isYou, replyBtnId, showDeleteModal}) => {
 
   const comments = useSelector(state => state.comments);
   const dispatch = useDispatch();
@@ -86,6 +86,11 @@ const Footer = ({comment, isYou, replyBtnId}) => {
     plusBtn.classList.remove('footer__voteUp--disabled');
   }
 
+  const showModal = e => {
+    e.preventDefault();
+    showDeleteModal.set(true);
+  }
+
   return (
     <div className="footer">
         <span className="footer__likes">
@@ -102,7 +107,8 @@ const Footer = ({comment, isYou, replyBtnId}) => {
           <div className="footer__btnContainer">
             <button 
             className="footer__btn footer__delete"
-            dataid={comment.id}>
+            dataid={comment.id}
+            onClick={showModal}>
               <img 
                   src={deleteImg} 
                   className="footer__btnImg footer__deleteImg" />

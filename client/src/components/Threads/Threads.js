@@ -3,7 +3,7 @@ import Thread from './Thread/Thread'
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
 
-const Threads = ({newCommentId}) => {
+const Threads = ({newCommentId, showDeleteModal}) => {
   const comments = useSelector(state => state.comments)
   const [replyBtnId, setReplyBtnId] = useState(0)
 
@@ -14,6 +14,7 @@ const Threads = ({newCommentId}) => {
           comment={comment}
           replyBtnId={{get: replyBtnId, set: setReplyBtnId}}
           newCommentId={newCommentId}
+          showDeleteModal={showDeleteModal}
           key={comment.id}
           />
         ))}

@@ -1,7 +1,13 @@
 import React from 'react'
 import './Modal.css'
 
-const Modal = () => {
+const Modal = ({showDeleteModal}) => {
+
+  const closeModal = e => {
+      e.preventDefault();
+      showDeleteModal.set(false);
+  }
+
   return (
     <dialog className="modal">
         <h3 className="modal__header">
@@ -12,7 +18,9 @@ const Modal = () => {
             comment and can't be undone.
         </p>
         <div className="modal__btnContainer">
-            <button className="modal__btn modal__cancelBtn">
+            <button 
+            className="modal__btn modal__cancelBtn"
+            onClick={closeModal}>
                 No, cancel
             </button>
             <button className="modal__btn modal__approveBtn">

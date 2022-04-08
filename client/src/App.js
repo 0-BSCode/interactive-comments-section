@@ -3,17 +3,30 @@ import Threads from './components/Threads/Threads'
 import Form from './components/Form/Form'
 import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 function App() {
   const [newCommentId, setNewCommentId] = useState(5);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  useEffect(() => {
+    const modal = document.querySelector(".modal");
+    console.log(showDeleteModal);
+    if (showDeleteModal) {
+      modal.showModal();
+    } else {
+      modal.close();
+    }
+  })
 
   return (
     <div className="app">
-      <Modal />
+      <Modal 
+      showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}} />
       <main className="app__main">
         <Threads 
-        newCommentId={{get: newCommentId, set: setNewCommentId}} />
+        newCommentId={{get: newCommentId, set: setNewCommentId}}
+        showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}} />
         <Form 
         newCommentId={{get: newCommentId, set: setNewCommentId}} />
         </main>

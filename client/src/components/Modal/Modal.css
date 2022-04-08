@@ -4,6 +4,10 @@
     border-radius: 1rem;
     width: 21.5rem;
     z-index: 999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal__header {
