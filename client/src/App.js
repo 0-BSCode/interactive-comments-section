@@ -38,8 +38,7 @@ TO-DO:
 1. Popup delete modal
 2. Delete functionality
 3. Edit functionality
-4. Styling textarea during user input
-5. Responsive design
-6. Clean props and states (remove redundant ones)
-7. Modularize code (export some component functions for cleaner code)
+4. Responsive design
+5. Clean props and states (remove redundant ones)
+6. Modularize code (export some component functions for cleaner code)
 */
