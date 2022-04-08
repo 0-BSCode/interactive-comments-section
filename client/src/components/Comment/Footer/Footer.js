@@ -6,7 +6,7 @@ import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateComment, deleteComment } from '../../../actions/comments'
 
-const Footer = ({comment, isYou, replyId, setReplyId}) => {
+const Footer = ({comment, isYou, replyBtnId}) => {
 
   const comments = useSelector(state => state.comments);
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const Footer = ({comment, isYou, replyId, setReplyId}) => {
     const elem = e.target;
     const elemId = getBtnId(elem);
     
-    elemId == replyId? setReplyId(0): setReplyId(elemId);
+    elemId == replyBtnId.get? replyBtnId.set(0): replyBtnId.set(elemId);
   }
 
   const incrementScore = e => {

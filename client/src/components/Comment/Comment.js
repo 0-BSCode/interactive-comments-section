@@ -4,11 +4,11 @@ import Body from './Body/Body'
 import Footer from './Footer/Footer'
 import Form from '../Form/Form'
 import './Comment.css'
+import { useSelector } from 'react-redux'
 
-const Comment = ({comment, currentUser, 
-                  replyId, setReplyId, isReply,
-                  commentId, setCommentId}) => {
-  
+const Comment = ({comment, replyBtnId, isReply, newCommentId}) => {
+
+  const currentUser = useSelector(state => state.currentUser);
   return (
     <>
     <article
@@ -26,17 +26,14 @@ const Comment = ({comment, currentUser,
         <Footer 
         comment={comment}
         isYou={currentUser.username === comment.user.username}
-        replyId={replyId}
-        setReplyId={setReplyId}
+        replyBtnId={replyBtnId}
         />
     </article>
     {
-      replyId == comment.id?
+      replyBtnId.get == comment.id?
       <Form 
-        replyingTo={comment}
-        setReplyId={setReplyId}
-        commentId={commentId}
-        setCommentId={setCommentId} />: ''
+        replyBtnId={replyBtnId}
+        newCommentId={newCommentId} />: ''
     }
     </>
   )

@@ -6,19 +6,17 @@ import Modal from './components/Modal/Modal'
 import {useState} from 'react'
 
 function App() {
-  const [commentId, setCommentId] = useState(5);
+  const [newCommentId, setNewCommentId] = useState(5);
 
   return (
     <div className="app">
       <Modal />
       <main className="app__main">
         <Threads 
-        commentId={commentId}
-        setCommentId={setCommentId} />
+        newCommentId={{get: newCommentId, set: setNewCommentId}} />
         <Form 
-        commentId={commentId}
-        setCommentId={setCommentId}/>
-      </main>
+        newCommentId={{get: newCommentId, set: setNewCommentId}} />
+        </main>
       <Footer />
     </div>
   );
@@ -41,4 +39,5 @@ TO-DO:
 4. Responsive design
 5. Clean props and states (remove redundant ones)
 6. Modularize code (export some component functions for cleaner code)
+7. Form validation (prevent empty comments, delete whole username or prevent it from being deleted)
 */

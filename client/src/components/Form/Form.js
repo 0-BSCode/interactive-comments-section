@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {useState} from 'react'
 import {addComment, updateComment} from '../../actions/comments'
 
-const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
+const Form = ({replyingTo, replyBtnId, newCommentId}) => {
   const currentUser = useSelector(state => state.currentUser)
   const comments = useSelector(state => state.comments)
   const dispatch = useDispatch()
@@ -13,7 +13,7 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
   const [newComment, setNewComment] = useState(
       replyingTo == ''?
       {
-        id: commentId,
+        id: newCommentId.get,
         content: '',
         createdAt: '1 minute ago',
         score: 0,
@@ -27,7 +27,7 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
         replies: []
       }:
     {
-        id: commentId,
+        id: newCommentId.get,
         content: '',
         createdAt: '1 minute ago',
         score: 0,
@@ -77,14 +77,14 @@ const Form = ({replyingTo, setReplyId, commentId, setCommentId}) => {
       }
 
       if (replyingTo != '') {
-          setReplyId(0);
+          replyBtnId.set(0);
           setTextInput(replyingTo.user.username);
       } else {
           setTextInput('');
       }
 
-      setCommentId(commentId+1);
-      setNewComment({...newComment, id: commentId+1})
+      newCommentId.set(newCommentId.get+1);
+      setNewComment({...newComment, id: newCommentId.get+1})
   }
 
   const updateText = e => {
