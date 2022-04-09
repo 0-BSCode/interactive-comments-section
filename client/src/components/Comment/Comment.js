@@ -6,7 +6,9 @@ import Form from '../Form/Form'
 import './Comment.css'
 import { useSelector } from 'react-redux'
 
-const Comment = ({comment, replyBtnId, isReply, newCommentId, showDeleteModal}) => {
+const Comment = ({comment, replyBtnId, 
+                  isReply, newCommentId, 
+                  showDeleteModal, deleteBtnId}) => {
 
   const currentUser = useSelector(state => state.currentUser);
   return (
@@ -28,6 +30,7 @@ const Comment = ({comment, replyBtnId, isReply, newCommentId, showDeleteModal}) 
         isYou={currentUser.username === comment.user.username}
         replyBtnId={replyBtnId}
         showDeleteModal={showDeleteModal}
+        deleteBtnId={deleteBtnId}
         />
     </article>
     {

@@ -2,7 +2,9 @@ import React from 'react'
 import Comment from '../Comment/Comment'
 import './Replies.css'
 
-const Replies = ({replies, replyBtnId, newCommentId, showDeleteModal}) => {
+const Replies = ({replies, replyBtnId, 
+                newCommentId, showDeleteModal,
+                deleteBtnId}) => {
 
   return (
     <div className="replies">
@@ -14,6 +16,7 @@ const Replies = ({replies, replyBtnId, newCommentId, showDeleteModal}) => {
             replyBtnId={replyBtnId}
             newCommentId={newCommentId}
             showDeleteModal={showDeleteModal}
+            deleteBtnId={deleteBtnId}
             key={reply.id} />
         ))}
     </div>

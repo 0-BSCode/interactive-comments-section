@@ -4,9 +4,11 @@ import deleteImg from '../../../images/icon-delete.svg'
 import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateComment, deleteComment } from '../../../actions/comments'
+import { updateComment } from '../../../actions/comments'
 
-const Footer = ({comment, isYou, replyBtnId, showDeleteModal}) => {
+const Footer = ({comment, isYou, 
+                replyBtnId, showDeleteModal,
+                deleteBtnId}) => {
 
   const comments = useSelector(state => state.comments);
   const dispatch = useDispatch();
@@ -89,6 +91,7 @@ const Footer = ({comment, isYou, replyBtnId, showDeleteModal}) => {
   const showModal = e => {
     e.preventDefault();
     showDeleteModal.set(true);
+    deleteBtnId.set(comment.id);
   }
 
   return (

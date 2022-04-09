@@ -8,10 +8,10 @@ import {useState, useEffect} from 'react'
 function App() {
   const [newCommentId, setNewCommentId] = useState(5);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteBtnId, setDeleteBtnId] = useState(0);
 
   useEffect(() => {
     const modal = document.querySelector(".modal");
-    console.log(showDeleteModal);
     if (showDeleteModal) {
       modal.showModal();
     } else {
@@ -22,11 +22,13 @@ function App() {
   return (
     <div className="app">
       <Modal 
-      showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}} />
+      showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
+      deleteBtnId={{get: deleteBtnId, set: setDeleteBtnId}} />
       <main className="app__main">
         <Threads 
         newCommentId={{get: newCommentId, set: setNewCommentId}}
-        showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}} />
+        showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
+        deleteBtnId={{get: deleteBtnId, set: setDeleteBtnId}} />
         <Form 
         newCommentId={{get: newCommentId, set: setNewCommentId}} />
         </main>
