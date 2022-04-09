@@ -31,6 +31,7 @@ const Footer = ({comment, isYou,
       } 
     })
 
+    // FIX THIS: Replies of the LATEST comment are the ones that're edited
     // Execute only if comment to update is a reply
     if (updatedComment == undefined) {
       // If reply
@@ -38,7 +39,7 @@ const Footer = ({comment, isYou,
         let updatedReplies = [];
         comm.replies.forEach(reply => {
           if (reply.id == comment.id) {
-            updatedReplies.push({...comment, score: comment.score + increment});
+            updatedReplies.push({...reply, score: comment.score + increment});
           } else {
             updatedReplies.push(reply);
           }
@@ -46,6 +47,7 @@ const Footer = ({comment, isYou,
         updatedComment = {...comm, replies: [...updatedReplies]};
       })
     }
+
 
     return updatedComment;
   }
@@ -98,6 +100,13 @@ const Footer = ({comment, isYou,
     e.preventDefault();
     editing.set(!editing.get)
   }
+
+  const handleUpdate = e => {
+    e.preventDefault();
+    
+    const textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
+    console.log(textArea.value);
+  }
   
   let isYouBtns;
 
@@ -105,7 +114,7 @@ const Footer = ({comment, isYou,
     isYouBtns = 
     <button 
       className="footer__update"
-      onClick={handleReply}
+      onClick={handleUpdate}
       dataid={comment.id}>
         Update
     </button>

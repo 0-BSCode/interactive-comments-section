@@ -27,6 +27,7 @@ const Comment = ({comment, replyBtnId,
         />
         <Body 
         content={comment.content}
+        commentId={comment.id}
         replyingTo={isReply? comment.replyingTo: ''}
         editing={editing} />
         <Footer 
