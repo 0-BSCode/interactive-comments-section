@@ -43,7 +43,7 @@ const Footer = ({comment, isYou,
             updatedReplies.push(reply);
           }
         })
-        updatedComment = {...comm, replies: updatedReplies};
+        updatedComment = {...comm, replies: [...updatedReplies]};
       })
     }
 
