@@ -8,7 +8,7 @@ import { updateComment } from '../../../actions/comments'
 
 const Footer = ({comment, isYou, 
                 replyBtnId, showDeleteModal,
-                deleteBtnId}) => {
+                deleteBtnId, editing}) => {
 
   const comments = useSelector(state => state.comments);
   const dispatch = useDispatch();
@@ -94,6 +94,46 @@ const Footer = ({comment, isYou,
     deleteBtnId.set(comment.id);
   }
 
+  const editComment = e => {
+    e.preventDefault();
+    editing.set(!editing.get)
+  }
+  
+  let isYouBtns;
+
+  if (editing.get) {
+    isYouBtns = 
+    <button 
+      className="footer__update"
+      onClick={handleReply}
+      dataid={comment.id}>
+        Update
+    </button>
+  } else {
+    isYouBtns = 
+    <div className="footer__btnContainer">
+      <button 
+      className="footer__btn footer__delete"
+      dataid={comment.id}
+      onClick={showModal}>
+        <img 
+            src={deleteImg} 
+            className="footer__btnImg footer__deleteImg" />
+        <p className="footer__btnTxt footer__deleteTxt">Delete</p>
+      </button>
+      <button 
+      className="footer__btn footer__edit"
+      dataid={comment.id}
+      onClick={editComment}>
+        <img 
+            src={editImg} 
+            className="footer__btnImg footer__editImg" />
+        <p className="footer__btnTxt footer__editTxt">Edit</p>
+      </button>
+    </div>
+  }
+
+
   return (
     <div className="footer">
         <span className="footer__likes">
@@ -107,25 +147,7 @@ const Footer = ({comment, isYou,
             onClick={decrementScore} />
         </span>
         {isYou?
-          <div className="footer__btnContainer">
-            <button 
-            className="footer__btn footer__delete"
-            dataid={comment.id}
-            onClick={showModal}>
-              <img 
-                  src={deleteImg} 
-                  className="footer__btnImg footer__deleteImg" />
-              <p className="footer__btnTxt footer__deleteTxt">Delete</p>
-            </button>
-            <button 
-            className="footer__btn footer__edit"
-            dataid={comment.id}>
-              <img 
-                  src={editImg} 
-                  className="footer__btnImg footer__editImg" />
-              <p className="footer__btnTxt footer__editTxt">Edit</p>
-            </button>
-          </div>:
+          isYouBtns:
           <button 
             className="footer__btn footer__reply"
             onClick={handleReply}

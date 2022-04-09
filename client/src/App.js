@@ -46,6 +46,9 @@ LEARNINGS:
 1. Dynamic image imports (place them in public folder)
 2. Dialog tag in HTML for modals
 3. Managing complicated data in redux (updating object = overriding old object instead of changing specific properties)
+4. Complex conditional rendering
+  - Elements can be stored in a variable and that's what's passed in render
+  - See Footer component
 
 TO-DO:
 1. Popup delete modal

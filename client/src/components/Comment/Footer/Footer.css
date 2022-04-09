@@ -103,3 +103,15 @@
 .footer__deleteTxt {
     color: var(--soft-red);
 }
+
+.footer__update {
+    height: 3rem;
+    width: 6rem;
+    background-color: var(--moderate-blue);
+    border: none;
+    border-radius: 0.6rem;
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: var(--font-500);
+    font-size: 0.9rem;
+}
