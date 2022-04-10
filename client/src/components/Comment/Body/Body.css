@@ -6,17 +6,3 @@
 .body__addressee {
     color: var(--moderate-blue);
 }
-
-.body__input {
-    height: 6rem;
-    width: 100%;
-    border: solid 0.02rem var(--light-gray);
-    border-radius: inherit;
-    padding: 0.8rem 1.2rem;
-    font-size: 1rem;
-    outline: none;
-}
-
-.body__input:focus {
-    border-color: var(--moderate-blue) !important;
-}

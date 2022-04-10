@@ -60,3 +60,24 @@ button {
   letter-spacing: 0.01rem;
   transition: 0.2s;
 }
+
+textarea {
+  height: 6rem;
+  width: 100%;
+  border: solid 0.02rem var(--light-gray);
+  border-radius: inherit;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  outline: none;
+  resize: none;
+}
+
+textarea:focus {
+  border-color: var(--moderate-blue) !important;
+}
+
+textarea::placeholder {
+  font-size: 1rem;
+  font-family: Rubik;
+  letter-spacing: 0.01rem;
+}
