@@ -7,9 +7,7 @@ import './Comment.css'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-const Comment = ({comment, replyBtnId, 
-                  isReply, newCommentId, 
-                  showDeleteModal, deleteBtnId}) => {
+const Comment = ({comment, isReply, showDeleteModal, importantIDs}) => {
 
   const currentUser = useSelector(state => state.currentUser);
   const [editing, setEditing] = useState(false);
@@ -33,18 +31,16 @@ const Comment = ({comment, replyBtnId,
         <Footer 
         comment={comment}
         isYou={currentUser.username === comment.user.username}
-        replyBtnId={replyBtnId}
+        importantIDs={importantIDs}
         showDeleteModal={showDeleteModal}
-        deleteBtnId={deleteBtnId}
         editing={{get: editing, set: setEditing}}
         />
     </article>
     {
-      replyBtnId.get == comment.id?
+      importantIDs.replyBtn.get == comment.id?
       <Form 
         replyFor={comment}
-        replyBtnId={replyBtnId}
-        newCommentId={newCommentId} />: ''
+        importantIDs={importantIDs} />: ''
     }
     </>
   )

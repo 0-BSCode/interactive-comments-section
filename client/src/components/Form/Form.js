@@ -3,6 +3,7 @@ import './Form.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {useState} from 'react'
 import {addComment, updateComment} from '../../actions/comments'
+// import {createComment} from '../../utils/comment'
 
 const Form = ({replyFor, replyBtnId, newCommentId}) => {
   const currentUser = useSelector(state => state.currentUser)

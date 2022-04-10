@@ -6,9 +6,7 @@ import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateComment } from '../../../actions/comments'
 
-const Footer = ({comment, isYou, 
-                replyBtnId, showDeleteModal,
-                deleteBtnId, editing}) => {
+const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
   const comments = useSelector(state => state.comments);
   const dispatch = useDispatch();
@@ -102,7 +100,7 @@ const Footer = ({comment, isYou,
     const elem = e.target;
     const elemId = getBtnId(elem);
     
-    elemId == replyBtnId.get? replyBtnId.set(0): replyBtnId.set(elemId);
+    elemId == importantIDs.replyBtn.get? importantIDs.replyBtn.set(0): importantIDs.replyBtn.set(elemId);
   }
 
   const incrementScore = e => {
@@ -138,7 +136,7 @@ const Footer = ({comment, isYou,
   const showModal = e => {
     e.preventDefault();
     showDeleteModal.set(true);
-    deleteBtnId.set(comment.id);
+    importantIDs.deleteBtn.set(comment.id);
   }
 
   const editComment = e => {
@@ -174,7 +172,8 @@ const Footer = ({comment, isYou,
       onClick={showModal}>
         <img 
             src={deleteImg} 
-            className="footer__btnImg footer__deleteImg" />
+            className="footer__btnImg footer__deleteImg"
+            alt="Delete comment" />
         <p className="footer__btnTxt footer__deleteTxt">Delete</p>
       </button>
       <button 
@@ -183,7 +182,8 @@ const Footer = ({comment, isYou,
       onClick={editComment}>
         <img 
             src={editImg} 
-            className="footer__btnImg footer__editImg" />
+            className="footer__btnImg footer__editImg"
+            alt="Edit comment" />
         <p className="footer__btnTxt footer__editTxt">Edit</p>
       </button>
     </div>
@@ -210,7 +210,8 @@ const Footer = ({comment, isYou,
             dataid={comment.id}>
               <img 
                   src={replyImg} 
-                  className="footer__btnImg footer__replyImg" />
+                  className="footer__btnImg footer__replyImg"
+                  alt="Reply to comment" />
               <p className="footer__btnTxt footer__replyTxt">Reply</p>
           </button>
         }

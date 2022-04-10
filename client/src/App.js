@@ -9,6 +9,10 @@ function App() {
   const [newCommentId, setNewCommentId] = useState(5);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteBtnId, setDeleteBtnId] = useState(0);
+  let importantIDs = {
+    "deleteBtn": {get: deleteBtnId, set: setDeleteBtnId},
+    "newComment": {get: newCommentId, set: setNewCommentId}
+  }
 
   useEffect(() => {
     const modal = document.querySelector(".modal");
@@ -23,14 +27,13 @@ function App() {
     <div className="app">
       <Modal 
       showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
-      deleteBtnId={{get: deleteBtnId, set: setDeleteBtnId}} />
+      deleteBtnId={importantIDs.deleteBtn} />
       <main className="app__main">
         <Threads 
-        newCommentId={{get: newCommentId, set: setNewCommentId}}
         showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
-        deleteBtnId={{get: deleteBtnId, set: setDeleteBtnId}} />
+        importantIDs={importantIDs} />
         <Form 
-        newCommentId={{get: newCommentId, set: setNewCommentId}} />
+        newCommentId={importantIDs.newComment} />
         </main>
       <Footer />
     </div>
