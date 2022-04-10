@@ -31,21 +31,28 @@ const Footer = ({comment, isYou,
       } 
     })
 
-    // FIX THIS: Replies of the LATEST comment are the ones that're edited
     // Execute only if comment to update is a reply
     if (updatedComment == undefined) {
       // If reply
-      comments.forEach(comm => {
+      let breakLoop = false;
+      for (let comm of comments) {
         let updatedReplies = [];
+
         comm.replies.forEach(reply => {
           if (reply.id == comment.id) {
-            updatedReplies.push({...reply, score: comment.score + increment});
+            updatedReplies.push({...reply, score: reply.score + increment});
+            breakLoop = true;
           } else {
             updatedReplies.push(reply);
           }
         })
-        updatedComment = {...comm, replies: [...updatedReplies]};
-      })
+
+        // Stop going through comments once reply that needs update is found
+        if (breakLoop) {
+          updatedComment = {...comm, replies: [...updatedReplies]};
+          break
+        }
+      }
     }
 
 
