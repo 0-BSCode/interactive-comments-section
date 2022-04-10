@@ -10,7 +10,6 @@ const Replies = ({replies, showDeleteModal, importantIDs}) => {
         {replies.map(reply => (
             <Comment 
             comment={reply} 
-            isReply={true}
             showDeleteModal={showDeleteModal}
             importantIDs={importantIDs}
             key={reply.id} />

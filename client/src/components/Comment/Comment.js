@@ -7,7 +7,7 @@ import './Comment.css'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-const Comment = ({comment, isReply, showDeleteModal, importantIDs}) => {
+const Comment = ({comment, showDeleteModal, importantIDs}) => {
 
   const currentUser = useSelector(state => state.currentUser);
   const [editing, setEditing] = useState(false);
@@ -24,9 +24,8 @@ const Comment = ({comment, isReply, showDeleteModal, importantIDs}) => {
         isYou={currentUser.username === comment.user.username}
         />
         <Body 
-        content={comment.content}
-        commentId={comment.id}
-        replyingTo={isReply? comment.replyingTo: ''}
+        comment={comment}
+        replyingTo={comment.replyingTo}
         editing={editing} />
         <Footer 
         comment={comment}
@@ -44,10 +43,6 @@ const Comment = ({comment, isReply, showDeleteModal, importantIDs}) => {
     }
     </>
   )
-}
-
-Comment.defaultProps = {
-    isReply: false
 }
 
 export default Comment

@@ -33,7 +33,7 @@ function App() {
         showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
         importantIDs={importantIDs} />
         <Form 
-        newCommentId={importantIDs.newComment} />
+        importantIDs={importantIDs} />
         </main>
       <Footer />
     </div>

@@ -2,9 +2,9 @@ import React from 'react'
 import './Body.css'
 import { useState } from 'react'
 
-const Body = ({content, commentId, replyingTo, editing}) => {
+const Body = ({comment, replyingTo, editing}) => {
 
-  const [textInput, setTextInput] = useState(replyingTo != ''? `@${replyingTo} ${content}`: content)
+  const [textInput, setTextInput] = useState(replyingTo != undefined? `@${replyingTo} ${comment.content}`: comment.content)
 
   const updateInput = e => {
     setTextInput(e.target.value);
@@ -14,20 +14,20 @@ const Body = ({content, commentId, replyingTo, editing}) => {
     <>
       {editing?
        <textarea 
-       dataid={commentId}
+       dataid={comment.id}
        className="body__input"
        placeholder="Add a comment..." 
        value={textInput}
        onChange={updateInput} />:
        <p className="body">
-        {replyingTo != ''? 
+        {replyingTo != undefined? 
         <>
           <b className="body__addressee">
             {`@${replyingTo} `}
           </b>
-          {content}
+          {comment.content}
         </>:
-        content}
+        comment.content}
       </p>
       }
     </>

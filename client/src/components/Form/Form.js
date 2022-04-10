@@ -5,7 +5,7 @@ import {useState} from 'react'
 import {addComment, updateComment} from '../../actions/comments'
 // import {createComment} from '../../utils/comment'
 
-const Form = ({replyFor, replyBtnId, newCommentId}) => {
+const Form = ({replyFor, importantIDs}) => {
   const currentUser = useSelector(state => state.currentUser)
   const comments = useSelector(state => state.comments)
   const dispatch = useDispatch()
@@ -14,7 +14,7 @@ const Form = ({replyFor, replyBtnId, newCommentId}) => {
   const [newComment, setNewComment] = useState(
       replyFor == ''?
       {
-        id: newCommentId.get,
+        id: importantIDs.newComment.get,
         content: '',
         createdAt: '1 minute ago',
         score: 0,
@@ -28,7 +28,7 @@ const Form = ({replyFor, replyBtnId, newCommentId}) => {
         replies: []
       }:
     {
-        id: newCommentId.get,
+        id: importantIDs.newComment.get,
         content: '',
         createdAt: '1 minute ago',
         score: 0,
@@ -78,14 +78,14 @@ const Form = ({replyFor, replyBtnId, newCommentId}) => {
       }
 
       if (replyFor != '') {
-          replyBtnId.set(0);
+          importantIDs.replyBtn.set(0);
           setTextInput(replyFor.user.username);
       } else {
           setTextInput('');
       }
 
-      newCommentId.set(newCommentId.get+1);
-      setNewComment({...newComment, id: newCommentId.get+1})
+      importantIDs.replyBtn.set(importantIDs.newComment.get+1);
+      setNewComment({...newComment, id: importantIDs.newComment.get+1})
   }
 
   const updateText = e => {
