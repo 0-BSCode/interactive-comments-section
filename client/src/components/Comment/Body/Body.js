@@ -1,7 +1,15 @@
 import React from 'react'
 import './Body.css'
+import { useState } from 'react'
 
 const Body = ({content, commentId, replyingTo, editing}) => {
+
+  const [textInput, setTextInput] = useState(replyingTo != ''? `@${replyingTo} ${content}`: content)
+
+  const updateInput = e => {
+    setTextInput(e.target.value);
+  }
+
   return (
     <>
       {editing?
@@ -9,7 +17,8 @@ const Body = ({content, commentId, replyingTo, editing}) => {
        dataid={commentId}
        className="body__input"
        placeholder="Add a comment..." 
-       value={replyingTo != ''? `@${replyingTo} ${content}`: content} />:
+       value={textInput}
+       onChange={updateInput} />:
        <p className="body">
         {replyingTo != ''? 
         <>

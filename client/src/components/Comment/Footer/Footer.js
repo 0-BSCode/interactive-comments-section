@@ -58,6 +58,43 @@ const Footer = ({comment, isYou,
     return updatedComment;
   }
 
+  const getUpdatedContent = content => {
+    let updatedComment;
+    let finalContent = content.split(' ').slice(1).join(' ');
+
+    comments.forEach(comm => {
+      if (comm.id == comment.id) {  // If comment
+        updatedComment = {...comment, content: finalContent};
+      } 
+    })
+
+    // Execute only if comment to update is a reply
+    if (updatedComment == undefined) {
+      // If reply
+      let breakLoop = false;
+      for (let comm of comments) {
+        let updatedReplies = [];
+
+        comm.replies.forEach(reply => {
+          if (reply.id == comment.id) {
+            updatedReplies.push({...reply, content: finalContent});
+            breakLoop = true;
+          } else {
+            updatedReplies.push(reply);
+          }
+        })
+
+        // Stop going through comments once reply that needs update is found
+        if (breakLoop) {
+          updatedComment = {...comm, replies: [...updatedReplies]};
+          break
+        }
+      }
+    }
+
+    return updatedComment;
+  }
+
   const handleReply = e => {
     e.preventDefault();
     const elem = e.target;
@@ -111,7 +148,9 @@ const Footer = ({comment, isYou,
     e.preventDefault();
     
     const textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
-    console.log(textArea.value);
+    let updatedComment = getUpdatedContent(textArea.value);
+    dispatch(updateComment(updatedComment));
+    editing.set(!editing.get);
   }
   
   let isYouBtns;
