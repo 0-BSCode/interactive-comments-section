@@ -60,7 +60,9 @@ const Footer = ({comment, isYou,
 
   const getUpdatedContent = content => {
     let updatedComment;
-    let finalContent = content.split(' ').slice(1).join(' ');
+
+    // Parse content based on if it's a comment or a reply
+    let finalContent = comment.replyingTo != undefined? content.split(' ').slice(1).join(' '): content;
 
     comments.forEach(comm => {
       if (comm.id == comment.id) {  // If comment
