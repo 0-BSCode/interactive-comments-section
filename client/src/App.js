@@ -49,13 +49,13 @@ LEARNINGS:
 4. Complex conditional rendering
   - Elements can be stored in a variable and that's what's passed in render
   - See Footer component
+5. How to use textarea
 
 TO-DO:
-1. Popup delete modal
-2. Delete functionality
-3. Edit functionality
-4. Responsive design
-5. Clean props and states (remove redundant ones)
-6. Modularize code (export some component functions for cleaner code)
-7. Form validation (prevent empty comments, delete whole username or prevent it from being deleted)
+
+1. Responsive design
+2. Clean props and states (remove redundant ones)
+3. Modularize code (export some component functions for cleaner code)
+4. Form validation (prevent empty comments, delete whole username or prevent it from being deleted)
+
 */
