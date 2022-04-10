@@ -57,5 +57,5 @@ TO-DO:
 2. Clean props and states (remove redundant ones)
 3. Modularize code (export some component functions for cleaner code)
 4. Form validation (prevent empty comments, delete whole username or prevent it from being deleted)
-
+5. Integrate moment for accurate time stamps
 */
