@@ -5,6 +5,7 @@ import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateComment } from '../../../actions/comments'
+import getUpdatedComment from '../../../utils/updateComment'
 
 const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
@@ -59,12 +60,9 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
   const getUpdatedContent = content => {
     let updatedComment;
 
-    // Parse content based on if it's a comment or a reply
-    let finalContent = comment.replyingTo != undefined? content.split(' ').slice(1).join(' '): content;
-
     comments.forEach(comm => {
       if (comm.id == comment.id) {  // If comment
-        updatedComment = {...comment, content: finalContent};
+        updatedComment = {...comment, content};
       } 
     })
 
@@ -77,7 +75,7 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
         comm.replies.forEach(reply => {
           if (reply.id == comment.id) {
-            updatedReplies.push({...reply, content: finalContent});
+            updatedReplies.push({...reply, content});
             breakLoop = true;
           } else {
             updatedReplies.push(reply);
@@ -105,7 +103,8 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
   const incrementScore = e => {
     e.preventDefault();
-    let updatedComment = getUpdatedCount(1);
+    // let updatedComment = getUpdatedCount(1);
+    let updatedComment = getUpdatedComment(comments, comment, {property: 'score', value: comment.score + 1});
     dispatch(updateComment(updatedComment));
 
     e.target.disabled = true;
@@ -120,7 +119,8 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
   const decrementScore = e => {
     e.preventDefault();
-    let updatedComment = getUpdatedCount(-1);
+    // let updatedComment = getUpdatedCount(-1);
+    let updatedComment = getUpdatedComment(comments, comment, {property: 'score', value: comment.score - 1});
     dispatch(updateComment(updatedComment));
 
     e.target.disabled = true;
@@ -148,7 +148,9 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
     e.preventDefault();
     
     const textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
-    let updatedComment = getUpdatedContent(textArea.value);
+    let finalContent = comment.replyingTo != undefined? textArea.value.split(' ').slice(1).join(' '): textArea.value;
+    // let updatedComment = getUpdatedContent(finalContent);
+    let updatedComment = getUpdatedComment(comments, comment, {property: 'content', value: finalContent});
     dispatch(updateComment(updatedComment));
     editing.set(!editing.get);
   }
