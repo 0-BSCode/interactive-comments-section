@@ -55,7 +55,6 @@ const Footer = ({comment, isYou,
       }
     }
 
-
     return updatedComment;
   }
 
