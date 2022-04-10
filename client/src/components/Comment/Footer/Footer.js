@@ -12,22 +12,28 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
   const comments = useSelector(state => state.comments);
   const dispatch = useDispatch();
 
-  const getBtnId = elem => {
-    let id = elem.getAttribute('dataid');
-
-    if (id == null) {
-      id = elem.parentElement.getAttribute('dataid');
-    }
-
-    return id;
-  }
-
   const handleReply = e => {
     e.preventDefault();
     const elem = e.target;
-    const elemId = getBtnId(elem);
+    const elemId = elem.getAttribute('dataid');
+    if (elemId == null) elemId = elem.parentElement.getAttribute('dataid');
     
     elemId == importantIDs.replyBtn.get? importantIDs.replyBtn.set(0): importantIDs.replyBtn.set(elemId);
+  }
+
+  const handleUpdate = e => {
+    e.preventDefault();
+    
+    const textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
+    let finalContent = comment.replyingTo != undefined? textArea.value.split(' ').slice(1).join(' '): textArea.value;
+    let updatedComment = getUpdatedComment(comments, comment, {property: 'content', value: finalContent});
+    dispatch(updateComment(updatedComment));
+    editing.set(!editing.get);
+  }
+
+  const handleEdit = e => {
+    e.preventDefault();
+    editing.set(!editing.get)
   }
 
   const incrementScore = e => {
@@ -65,21 +71,6 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
     showDeleteModal.set(true);
     importantIDs.deleteBtn.set(comment.id);
   }
-
-  const editComment = e => {
-    e.preventDefault();
-    editing.set(!editing.get)
-  }
-
-  const handleUpdate = e => {
-    e.preventDefault();
-    
-    const textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
-    let finalContent = comment.replyingTo != undefined? textArea.value.split(' ').slice(1).join(' '): textArea.value;
-    let updatedComment = getUpdatedComment(comments, comment, {property: 'content', value: finalContent});
-    dispatch(updateComment(updatedComment));
-    editing.set(!editing.get);
-  }
   
   let isYouBtns;
 
@@ -107,7 +98,7 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
       <button 
       className="footer__btn footer__edit"
       dataid={comment.id}
-      onClick={editComment}>
+      onClick={handleEdit}>
         <img 
             src={editImg} 
             className="footer__btnImg footer__editImg"
