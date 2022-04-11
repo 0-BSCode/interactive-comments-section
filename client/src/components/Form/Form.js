@@ -61,7 +61,6 @@ const Form = ({replyFor, importantIDs}) => {
         // Remove username so it doesn't repeat
         const finalContent = textInput.split(' ').slice(1,).join(' ');
         if (finalContent.length == 0) {
-            // alert("Can't create an empty reply");
             replyTextArea.classList.add('form__input--warning')
             commentTextArea.classList.remove("form__input--warning")
             return;
@@ -107,6 +106,8 @@ const Form = ({replyFor, importantIDs}) => {
   }
 
   const updateText = e => {
+      const baseInput = `@${replyFor.user.username}`
+      if (e.target.value == baseInput) return;
       setTextInput(e.target.value);
   }
 
