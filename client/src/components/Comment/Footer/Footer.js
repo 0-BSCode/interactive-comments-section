@@ -1,13 +1,11 @@
 import React from 'react'
-import replyImg from '../../../images/icon-reply.svg'
-import deleteImg from '../../../images/icon-delete.svg'
-import editImg from '../../../images/icon-edit.svg'
 import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateComment } from '../../../actions/comments'
 import getUpdatedComment from '../../../utils/updateComment'
 import {enableBtn, disableBtn} from '../../../utils/toggleBtn'
 import YourFooter from './YourFooter/YourFooter'
+import replyImg from '../../../images/icon-reply.svg'
 
 const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
