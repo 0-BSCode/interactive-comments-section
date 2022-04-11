@@ -9,6 +9,10 @@
     margin-top: 1rem;
 }
 
+.form__input--warning {
+    border-color: var(--soft-red);
+}
+
 .form__footer {
     margin-top: 1rem;
     display: flex;

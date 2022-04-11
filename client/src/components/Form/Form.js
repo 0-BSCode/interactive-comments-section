@@ -44,12 +44,29 @@ const Form = ({replyFor, importantIDs}) => {
 
   const createComment = e => {
       e.preventDefault();
+      let commentTextArea = document.querySelector('.form__input');
+      let replyTextArea = document.querySelector('.form__inputReply');
 
       if (replyFor == '') { // Create a comment
-        dispatch(addComment({...newComment, content: textInput}));
+        console.log(textInput);
+        if (textInput.length == 0) {
+            commentTextArea.classList.add('form__input--warning');
+            return;
+        }
+
+        dispatch(addComment({...newComment, content: textInput}))
+
       } else { // Create a reply to a comment
 
         // Remove username so it doesn't repeat
+        const finalContent = textInput.split(' ').slice(1,).join(' ');
+        if (finalContent.length == 0) {
+            // alert("Can't create an empty reply");
+            replyTextArea.classList.add('form__input--warning')
+            commentTextArea.classList.remove("form__input--warning")
+            return;
+        }
+
         const updatedComment = {...newComment, content: textInput.split(' ').slice(1,).join(' ')};
         
         // Check for comment that starts thread to add it to
@@ -83,7 +100,9 @@ const Form = ({replyFor, importantIDs}) => {
           setTextInput('');
       }
 
-      importantIDs.replyBtn.set(importantIDs.newComment.get+1);
+      console.log(importantIDs.newComment.get);
+
+      importantIDs.newComment.set(importantIDs.newComment.get+1);
       setNewComment({...newComment, id: importantIDs.newComment.get+1})
   }
 
@@ -91,15 +110,25 @@ const Form = ({replyFor, importantIDs}) => {
       setTextInput(e.target.value);
   }
 
+  const removeReply = () => {
+      importantIDs.replyBtn.set(0);
+  }
+
+  const unfocusForm = () => {
+      let commentTextArea = document.querySelector('.form__input');
+      commentTextArea.classList.remove("form__input--warning");
+  }
+
   return (
     <form 
         className="form"
         onSubmit={createComment}>
         <textarea 
-            className="form__input"
+            className={replyFor == ''? "form__input": "form__inputReply"}
             placeholder="Add a comment..." 
             value={textInput}
-            onChange={updateText} />
+            onChange={updateText}
+            onClick={replyFor == ''? removeReply: unfocusForm} />
         <div className="form__footer">
             <img 
                 src={`.${currentUser.image.png}`} 
