@@ -6,6 +6,8 @@ import './Footer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateComment } from '../../../actions/comments'
 import getUpdatedComment from '../../../utils/updateComment'
+import {enableBtn, disableBtn} from '../../../utils/toggleBtn'
+import YourFooter from './YourFooter/YourFooter'
 
 const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
@@ -15,7 +17,7 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
   const handleReply = e => {
     e.preventDefault();
     const elem = e.target;
-    const elemId = elem.getAttribute('dataid');
+    let elemId = elem.getAttribute('dataid');
     if (elemId == null) elemId = elem.parentElement.getAttribute('dataid');
     
     elemId == importantIDs.replyBtn.get? importantIDs.replyBtn.set(0): importantIDs.replyBtn.set(elemId);
@@ -41,14 +43,10 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
     let updatedComment = getUpdatedComment(comments, comment, {property: 'score', value: comment.score + 1});
     dispatch(updateComment(updatedComment));
 
-    e.target.disabled = true;
-    e.target.classList.add('footer__vote--disabled');
-    e.target.classList.add('footer__voteUp--disabled');
+    disableBtn(e.target);
 
     const minusBtn = document.querySelector(`.footer__voteDown[dataid="${comment.id}"]`);
-    minusBtn.disabled = false;
-    minusBtn.classList.remove('footer__vote--disabled');
-    minusBtn.classList.remove('footer__voteDown--disabled');
+    enableBtn(minusBtn);
   }
 
   const decrementScore = e => {
@@ -56,14 +54,11 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
     let updatedComment = getUpdatedComment(comments, comment, {property: 'score', value: comment.score - 1});
     dispatch(updateComment(updatedComment));
 
-    e.target.disabled = true;
-    e.target.classList.add('footer__vote--disabled');
-    e.target.classList.add('footer__voteDown--disabled');
+    disableBtn(e.target);
 
     const plusBtn = document.querySelector(`.footer__voteUp[dataid="${comment.id}"]`);
-    plusBtn.disabled = false;
-    plusBtn.classList.remove('footer__vote--disabled');
-    plusBtn.classList.remove('footer__voteUp--disabled');
+    enableBtn(plusBtn);
+
   }
 
   const showModal = e => {
@@ -71,43 +66,6 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
     showDeleteModal.set(true);
     importantIDs.deleteBtn.set(comment.id);
   }
-  
-  let isYouBtns;
-
-  if (editing.get) {
-    isYouBtns = 
-    <button 
-      className="footer__update"
-      onClick={handleUpdate}
-      dataid={comment.id}>
-        Update
-    </button>
-  } else {
-    isYouBtns = 
-    <div className="footer__btnContainer">
-      <button 
-      className="footer__btn footer__delete"
-      dataid={comment.id}
-      onClick={showModal}>
-        <img 
-            src={deleteImg} 
-            className="footer__btnImg footer__deleteImg"
-            alt="Delete comment" />
-        <p className="footer__btnTxt footer__deleteTxt">Delete</p>
-      </button>
-      <button 
-      className="footer__btn footer__edit"
-      dataid={comment.id}
-      onClick={handleEdit}>
-        <img 
-            src={editImg} 
-            className="footer__btnImg footer__editImg"
-            alt="Edit comment" />
-        <p className="footer__btnTxt footer__editTxt">Edit</p>
-      </button>
-    </div>
-  }
-
 
   return (
     <div className="footer">
@@ -122,7 +80,12 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
             onClick={decrementScore} />
         </span>
         {isYou?
-          isYouBtns:
+          <YourFooter
+          editing={editing}
+          dataid={comment.id} 
+          handleUpdate={handleUpdate} 
+          handleEdit={handleEdit} 
+          showModal={showModal} />:
           <button 
             className="footer__btn footer__reply"
             onClick={handleReply}
