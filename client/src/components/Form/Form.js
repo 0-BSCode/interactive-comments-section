@@ -2,7 +2,7 @@ import React from 'react'
 import './Form.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {useState} from 'react'
-import {addComment, updateComment} from '../../actions/comments'
+import { createComment } from '../../utils/commentProcessing'
 
 const Form = ({replyFor, importantIDs}) => {
   const currentUser = useSelector(state => state.currentUser)
@@ -42,65 +42,65 @@ const Form = ({replyFor, importantIDs}) => {
       }
     )
 
-  const createComment = e => {
-      e.preventDefault();
-      let commentTextArea = document.querySelector('.form__input');
-      let replyTextArea = document.querySelector('.form__inputReply');
+//   const createComment = e => {
+//       e.preventDefault();
+//       let commentTextArea = document.querySelector('.form__input');
+//       let replyTextArea = document.querySelector('.form__inputReply');
 
-      if (replyFor == '') { // Create a comment
-        if (textInput.length == 0) {
-            commentTextArea.classList.add('form__input--warning');
-            return;
-        }
+//       if (replyFor == '') { // Create a comment
+//         if (textInput.length == 0) {
+//             commentTextArea.classList.add('form__input--warning');
+//             return;
+//         }
 
-        dispatch(addComment({...newComment, content: textInput}))
+//         dispatch(addComment({...newComment, content: textInput}))
 
-      } else { // Create a reply to a comment
+//       } else { // Create a reply to a comment
 
-        // Remove username so it doesn't repeat
-        const finalContent = textInput.split(' ').slice(1,).join(' ');
-        if (finalContent.length == 0) {
-            replyTextArea.classList.add('form__input--warning')
-            commentTextArea.classList.remove("form__input--warning")
-            return;
-        }
+//         // Remove username so it doesn't repeat
+//         const finalContent = textInput.split(' ').slice(1,).join(' ');
+//         if (finalContent.length == 0) {
+//             replyTextArea.classList.add('form__input--warning')
+//             commentTextArea.classList.remove("form__input--warning")
+//             return;
+//         }
 
-        const updatedComment = {...newComment, content: textInput.split(' ').slice(1,).join(' ')};
+//         const updatedComment = {...newComment, content: textInput.split(' ').slice(1,).join(' ')};
         
-        // Check for comment that starts thread to add it to
-        // its 'replies' property
-        let parentComment = replyFor;
+//         // Check for comment that starts thread to add it to
+//         // its 'replies' property
+//         let parentComment = replyFor;
 
-        comments.forEach(comment => {
+//         comments.forEach(comment => {
 
-            // Check if reply is to a comment
-            if (comment.id == replyFor.id) {
-                parentComment = comment
-            }
+//             // Check if reply is to a comment
+//             if (comment.id == replyFor.id) {
+//                 parentComment = comment
+//             }
 
-            // Check if reply is to a reply
-            comment.replies.forEach(reply => {
-                if (reply.id == replyFor.id) {
-                    parentComment = comment
-                }
-            })
-        })
+//             // Check if reply is to a reply
+//             comment.replies.forEach(reply => {
+//                 if (reply.id == replyFor.id) {
+//                     parentComment = comment
+//                 }
+//             })
+//         })
 
-        dispatch(updateComment(
-            {...parentComment, replies: [...parentComment["replies"], updatedComment]}
-        ))
-      }
+//         dispatch(updateComment(
+//             {...parentComment, replies: [...parentComment["replies"], updatedComment]}
+//         ))
+//       }
 
-      if (replyFor != '') {
-          importantIDs.replyBtn.set(0);
-          setTextInput(replyFor.user.username);
-      } else {
-          setTextInput('');
-      }
+//       if (replyFor != '') {
+//           importantIDs.replyBtn.set(0);
+//           setTextInput(replyFor.user.username);
+//       } else {
+//           setTextInput('');
+//       }
 
-      importantIDs.newComment.set(importantIDs.newComment.get+1);
-      setNewComment({...newComment, id: importantIDs.newComment.get+1})
-  }
+//       importantIDs.newComment.set(importantIDs.newComment.get+1);
+//       setNewComment({...newComment, id: importantIDs.newComment.get+1})
+//   }
 
   const updateText = e => {
       if (replyFor != '' && e.target.value == `@${replyFor.user.username}`) return;
@@ -116,10 +116,13 @@ const Form = ({replyFor, importantIDs}) => {
       commentTextArea.classList.remove("form__input--warning");
   }
 
+  const NewComment = {get: newComment, set: setNewComment};
+  const TextInput = {get: textInput, set: setTextInput};
+
   return (
     <form 
         className="form"
-        onSubmit={createComment}>
+        onSubmit={e => createComment(e, replyFor, dispatch, NewComment, TextInput, importantIDs)}>
         <textarea 
             className={replyFor == ''? "form__input": "form__inputReply"}
             placeholder="Add a comment..." 

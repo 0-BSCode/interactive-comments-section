@@ -1,6 +1,6 @@
 import { updateComment } from '../actions/comments'
 import { enableBtn, disableBtn } from './toggleBtn';
-import getUpdatedComment from './updateComment'
+import {getUpdatedComment} from './commentProcessing'
 
 
 export function handleReply(event, importantIDs) {
