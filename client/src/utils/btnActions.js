@@ -57,12 +57,3 @@ export function showModal(event, showDeleteModal, importantIDs, comment) {
     showDeleteModal.set(true);
     importantIDs.deleteBtn.set(comment.id);
 }
-
-/*
-
-showModal
-1. event
-2. showDeleteModal
-3. importantIDs
-
-*/
