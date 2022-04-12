@@ -3,7 +3,9 @@ import './Footer.css'
 import { useDispatch } from 'react-redux'
 import YourFooter from './YourFooter/YourFooter'
 import replyImg from '../../../images/icon-reply.svg'
-import { handleReply, handleUpdate, handleEdit, incrementScore, decrementScore, showModal } from '../../../utils/btnActions'
+import { handleReply, handleUpdate, 
+         handleEdit, incrementScore, 
+         decrementScore, showModal } from '../../../utils/btnActions'
 
 const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 

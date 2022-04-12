@@ -3,6 +3,7 @@ import './Form.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {useState} from 'react'
 import { createComment } from '../../utils/commentProcessing'
+import { updateText, removeReply, unfocusForm } from '../../utils/formActions'
 
 const Form = ({replyFor, importantIDs}) => {
   const currentUser = useSelector(state => state.currentUser)
@@ -41,20 +42,6 @@ const Form = ({replyFor, importantIDs}) => {
       }
     )
 
-  const updateText = e => {
-      if (replyFor != '' && e.target.value == `@${replyFor.user.username}`) return;
-      setTextInput(e.target.value);
-  }
-
-  const removeReply = () => {
-      importantIDs.replyBtn.set(0);
-  }
-
-  const unfocusForm = () => {
-      let commentTextArea = document.querySelector('.form__input');
-      commentTextArea.classList.remove("form__input--warning");
-  }
-
   const NewComment = {get: newComment, set: setNewComment};
   const TextInput = {get: textInput, set: setTextInput};
 
@@ -66,8 +53,8 @@ const Form = ({replyFor, importantIDs}) => {
             className={replyFor == ''? "form__input": "form__inputReply"}
             placeholder="Add a comment..." 
             value={textInput}
-            onChange={updateText}
-            onClick={replyFor == ''? removeReply: unfocusForm} />
+            onChange={e => updateText(e, replyFor, TextInput)}
+            onClick={replyFor == ''? removeReply(importantIDs): unfocusForm} />
         <div className="form__footer">
             <img 
                 src={`.${currentUser.image.png}`} 

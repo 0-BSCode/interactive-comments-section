@@ -8,7 +8,7 @@ export function handleReply(event, importantIDs) {
     const elem = event.target;
     let elemId = elem.getAttribute('dataid');
     if (elemId == null) elemId = elem.parentElement.getAttribute('dataid');
-    
+
     elemId == importantIDs.replyBtn.get? importantIDs.replyBtn.set(0): importantIDs.replyBtn.set(elemId);
 }
 
@@ -25,6 +25,7 @@ export function handleUpdate(event, comment, dispatch, editing) {
 
 export function handleEdit(event, editing) {
     event.preventDefault();
+    console.log(editing.get);
     editing.set(!editing.get);
 }
 
