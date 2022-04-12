@@ -48,7 +48,6 @@ const Form = ({replyFor, importantIDs}) => {
       let replyTextArea = document.querySelector('.form__inputReply');
 
       if (replyFor == '') { // Create a comment
-        console.log(textInput);
         if (textInput.length == 0) {
             commentTextArea.classList.add('form__input--warning');
             return;
@@ -99,15 +98,13 @@ const Form = ({replyFor, importantIDs}) => {
           setTextInput('');
       }
 
-      console.log(importantIDs.newComment.get);
-
       importantIDs.newComment.set(importantIDs.newComment.get+1);
       setNewComment({...newComment, id: importantIDs.newComment.get+1})
   }
 
   const updateText = e => {
-      const baseInput = `@${replyFor.user.username}`
-      if (e.target.value == baseInput) return;
+      if (replyFor != '' && e.target.value == `@${replyFor.user.username}`) return;
+
       setTextInput(e.target.value);
   }
 
