@@ -6,64 +6,65 @@ import getUpdatedComment from '../../../utils/updateComment'
 import {enableBtn, disableBtn} from '../../../utils/toggleBtn'
 import YourFooter from './YourFooter/YourFooter'
 import replyImg from '../../../images/icon-reply.svg'
+import { handleReply, handleUpdate, handleEdit, incrementScore, decrementScore, showModal } from '../../../utils/btnActions'
 
 const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
 
   const comments = useSelector(state => state.comments);
   const dispatch = useDispatch();
 
-  const handleReply = e => {
-    e.preventDefault();
-    const elem = e.target;
-    let elemId = elem.getAttribute('dataid');
-    if (elemId == null) elemId = elem.parentElement.getAttribute('dataid');
+  // const handleReply = e => {
+  //   e.preventDefault();
+  //   const elem = e.target;
+  //   let elemId = elem.getAttribute('dataid');
+  //   if (elemId == null) elemId = elem.parentElement.getAttribute('dataid');
     
-    elemId == importantIDs.replyBtn.get? importantIDs.replyBtn.set(0): importantIDs.replyBtn.set(elemId);
-  }
+  //   elemId == importantIDs.replyBtn.get? importantIDs.replyBtn.set(0): importantIDs.replyBtn.set(elemId);
+  // }
 
-  const handleUpdate = e => {
-    e.preventDefault();
+  // const handleUpdate = e => {
+  //   e.preventDefault();
     
-    const textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
-    let finalContent = comment.replyingTo != undefined? textArea.value.split(' ').slice(1).join(' '): textArea.value;
-    let updatedComment = getUpdatedComment(comments, comment, {property: 'content', value: finalContent});
-    dispatch(updateComment(updatedComment));
-    editing.set(!editing.get);
-  }
+  //   const textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
+  //   let finalContent = comment.replyingTo != undefined? textArea.value.split(' ').slice(1).join(' '): textArea.value;
+  //   let updatedComment = getUpdatedComment(comments, comment, {property: 'content', value: finalContent});
+  //   dispatch(updateComment(updatedComment));
+  //   editing.set(!editing.get);
+  // }
 
-  const handleEdit = e => {
-    e.preventDefault();
-    editing.set(!editing.get)
-  }
+  // const handleEdit = e => {
+  //   e.preventDefault();
+  //   editing.set(!editing.get)
+  // }
 
-  const incrementScore = e => {
-    e.preventDefault();
-    let updatedComment = getUpdatedComment(comments, comment, {property: 'score', value: comment.score + 1});
-    dispatch(updateComment(updatedComment));
+  // const incrementScore = e => {
+  //   e.preventDefault();
+  //   let updatedComment = getUpdatedComment(comment, {property: 'score', value: comment.score + 1});
+  //   dispatch(updateComment(updatedComment));
 
-    disableBtn(e.target);
+  //   disableBtn(e.target);
 
-    const minusBtn = document.querySelector(`.footer__voteDown[dataid="${comment.id}"]`);
-    enableBtn(minusBtn);
-  }
+  //   const minusBtn = document.querySelector(`.footer__voteDown[dataid="${comment.id}"]`);
+  //   enableBtn(minusBtn);
+  // }
 
-  const decrementScore = e => {
-    e.preventDefault();
-    let updatedComment = getUpdatedComment(comments, comment, {property: 'score', value: comment.score - 1});
-    dispatch(updateComment(updatedComment));
+  // const decrementScore = e => {
+  //   e.preventDefault();
+  //   let updatedComment = getUpdatedComment(comment, {property: 'score', value: comment.score - 1});
+  //   dispatch(updateComment(updatedComment));
 
-    disableBtn(e.target);
+  //   disableBtn(e.target);
 
-    const plusBtn = document.querySelector(`.footer__voteUp[dataid="${comment.id}"]`);
-    enableBtn(plusBtn);
+  //   const plusBtn = document.querySelector(`.footer__voteUp[dataid="${comment.id}"]`);
+  //   enableBtn(plusBtn);
 
-  }
+  // }
 
-  const showModal = e => {
-    e.preventDefault();
-    showDeleteModal.set(true);
-    importantIDs.deleteBtn.set(comment.id);
-  }
+  // const showModal = e => {
+  //   e.preventDefault();
+  //   showDeleteModal.set(true);
+  //   importantIDs.deleteBtn.set(comment.id);
+  // }
 
   return (
     <div className="footer">
@@ -71,22 +72,22 @@ const Footer = ({comment, isYou, showDeleteModal, importantIDs, editing}) => {
             <button 
             className="footer__vote footer__voteUp"
             dataid={comment.id}
-            onClick={incrementScore} />
+            onClick={e => incrementScore(e, comment, dispatch)} />
             <p className="footer__likeCount">{comment.score}</p>
             <button className="footer__vote footer__voteDown"
             dataid={comment.id}
-            onClick={decrementScore} />
+            onClick={e => decrementScore(e, comment, dispatch)} />
         </span>
         {isYou?
           <YourFooter
           editing={editing}
           dataid={comment.id} 
-          handleUpdate={handleUpdate} 
-          handleEdit={handleEdit} 
-          showModal={showModal} />:
+          handleUpdate={e => handleUpdate(e, comment, dispatch, editing)} 
+          handleEdit={e => handleEdit(e, editing)} 
+          showModal={e => showModal(e, showDeleteModal, importantIDs, comment)} />:
           <button 
             className="footer__btn footer__reply"
-            onClick={handleReply}
+            onClick={e => handleReply(e, importantIDs)}
             dataid={comment.id}>
               <img 
                   src={replyImg} 

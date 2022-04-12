@@ -1,7 +1,9 @@
-const getUpdatedComment = (comments, comment, payload) => {
+import store from './createStore'
+
+const getUpdatedComment = (comment, payload) => {
+    const comments = store.getState().comments;
     let updatedComment = comment;
     let isReply = true;
-    console.log(payload.value);
 
     comments.forEach(comm => {
       if (comm.id == comment.id) {  // If comment

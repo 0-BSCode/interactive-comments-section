@@ -104,7 +104,6 @@ const Form = ({replyFor, importantIDs}) => {
 
   const updateText = e => {
       if (replyFor != '' && e.target.value == `@${replyFor.user.username}`) return;
-
       setTextInput(e.target.value);
   }
 

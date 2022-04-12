@@ -53,6 +53,7 @@ LEARNINGS:
   - Elements can be stored in a variable and that's what's passed in render
   - See Footer component
 5. How to use textarea
+6. Access global redux states from non-component functions
 
 TO-DO:
 
