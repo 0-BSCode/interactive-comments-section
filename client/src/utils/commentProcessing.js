@@ -89,16 +89,3 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
   importantIDs.newComment.set(importantIDs.newComment.get+1);
   newComment.set({...newComment.get, id: importantIDs.newComment.get+1})
 }
-
-/*
-
-VARIABLES:
-1. event
-2. replyFor
-3. dispatch
-4. addComment
-5. newComment
-6. textInput
-7. importantIDs
-
-*/
