@@ -1,24 +1,24 @@
 import React from 'react'
 import deleteImg from '../../../../images/icon-delete.svg'
 import editImg from '../../../../images/icon-edit.svg'
+import { handleEdit, handleUpdate, showModal } from '../../../../utils/btnActions'
 
-const YourFooter = ({editing, dataid,
-                    handleUpdate, handleEdit,
-                    showModal}) => {
+const YourFooter = ({editing, comment, dispatch,
+                     showDeleteModal, importantIDs}) => {
   return (
     <>
         {editing.get?
         <button 
         className="footer__update"
-        onClick={handleUpdate}
-        dataid={dataid}>
+        onClick={e => handleUpdate(e, comment, dispatch, editing)}
+        dataid={comment.id}>
             Update
         </button>:
         <div className="footer__btnContainer">
             <button 
             className="footer__btn footer__delete"
-            dataid={dataid}
-            onClick={showModal}>
+            dataid={comment.id}
+            onClick={e => showModal(e, showDeleteModal, importantIDs, comment)}>
                 <img 
                     src={deleteImg} 
                     className="footer__btnImg footer__deleteImg"
@@ -27,8 +27,8 @@ const YourFooter = ({editing, dataid,
             </button>
             <button 
             className="footer__btn footer__edit"
-            dataid={dataid}
-            onClick={handleEdit}>
+            dataid={comment.id}
+            onClick={e => handleEdit(e, editing)}>
                 <img 
                     src={editImg} 
                     className="footer__btnImg footer__editImg"
