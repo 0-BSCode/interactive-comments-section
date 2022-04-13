@@ -1,6 +1,6 @@
 import './App.css';
 import Threads from './components/Threads/Threads'
-import Form from './components/Form/Form'
+import Form from './components/FormDesktop/Form'
 import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
 import {useState, useEffect} from 'react'
@@ -60,4 +60,6 @@ TO-DO:
 
 1. Responsive design
 2. Integrate moment for accurate time stamps
+3. Backend Setup
+
 */
