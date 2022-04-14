@@ -2,7 +2,7 @@ import React from 'react'
 import replyImg from '../../../../images/icon-reply.svg'
 import { handleReply } from '../../../../utils/btnActions'
 
-const DefaultFooter = ({importantIDs, dataid}) => {
+const DefaultHeader = ({importantIDs, dataid}) => {
   return (
     <button 
     className="footer__btn footer__reply"
@@ -17,4 +17,4 @@ const DefaultFooter = ({importantIDs, dataid}) => {
   )
 }
 
-export default DefaultFooter
+export default DefaultHeader

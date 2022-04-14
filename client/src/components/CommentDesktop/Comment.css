@@ -1,0 +1,11 @@
+.comment {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment__content {
+    width: 85%;
+}

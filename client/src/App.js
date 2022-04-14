@@ -1,6 +1,6 @@
 import './App.css';
 import Threads from './components/Threads/Threads'
-import Form from './components/FormDesktop/Form'
+import FormDesktop from './components/FormDesktop/Form'
 import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
 import {useState, useEffect} from 'react'
@@ -32,7 +32,7 @@ function App() {
         <Threads 
         showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
         importantIDs={importantIDs} />
-        <Form 
+        <FormDesktop 
         importantIDs={importantIDs} />
         </main>
       <Footer />

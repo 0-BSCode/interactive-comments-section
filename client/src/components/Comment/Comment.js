@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header/Header'
 import Body from './Body/Body'
 import Footer from './Footer/Footer'
-import Form from '../FormMobile/Form'
+import FormMobile from '../FormMobile/Form'
 import './Comment.css'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
@@ -37,7 +37,7 @@ const Comment = ({comment, showDeleteModal, importantIDs}) => {
     </article>
     {
       importantIDs.replyBtn.get == comment.id?
-      <Form 
+      <FormMobile
         replyFor={comment}
         importantIDs={importantIDs} />: ''
     }
