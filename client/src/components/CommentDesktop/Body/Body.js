@@ -15,7 +15,7 @@ const Body = ({comment, replyingTo, editing}) => {
 
   return (
     <>
-      {editing?
+      {editing.get?
        <>
         <textarea 
         dataid={comment.id}
@@ -24,7 +24,7 @@ const Body = ({comment, replyingTo, editing}) => {
         value={textInput}
         onChange={updateInput} />
         <button 
-        className="footer__update"
+        className="body__update"
         onClick={e => handleUpdate(e, comment, dispatch, editing)}
         dataid={comment.id}>
             Update

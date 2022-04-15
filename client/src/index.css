@@ -110,4 +110,17 @@ textarea::placeholder {
     padding: 0.7rem 1.5rem;
     line-height: 1.3rem;
   }
+
+  .replies .comment.comment,
+  .thread .replies .form.form {
+    width: 95%;
+  }
+
+  .replies .comment .header {
+    width: 100% !important;
+  }
+
+  .replies__border.replies__border {
+    left: 2rem;
+  }
 }

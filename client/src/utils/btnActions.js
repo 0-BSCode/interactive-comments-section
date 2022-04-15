@@ -25,7 +25,6 @@ export function handleUpdate(event, comment, dispatch, editing) {
 
 export function handleEdit(event, editing) {
     event.preventDefault();
-    console.log(editing.get);
     editing.set(!editing.get);
 }
 

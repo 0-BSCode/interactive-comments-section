@@ -1,5 +1,5 @@
 import React from 'react'
-import Comment from '../Comment/Comment'
+import CommentDesktop from '../CommentDesktop/Comment'
 import './Replies.css'
 
 const Replies = ({replies, showDeleteModal, importantIDs}) => {
@@ -8,7 +8,7 @@ const Replies = ({replies, showDeleteModal, importantIDs}) => {
     <div className="replies">
         <div className="replies__border" />
         {replies.map(reply => (
-            <Comment 
+            <CommentDesktop 
             comment={reply} 
             showDeleteModal={showDeleteModal}
             importantIDs={importantIDs}

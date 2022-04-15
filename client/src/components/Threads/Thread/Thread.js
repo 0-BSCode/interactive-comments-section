@@ -1,5 +1,5 @@
 import React from 'react'
-import Comment from '../../Comment/Comment'
+import CommentMobile from '../../Comment/Comment'
 import CommentDesktop from '../../CommentDesktop/Comment'
 import Replies from '../../Replies/Replies'
 import './Thread.css'
@@ -15,12 +15,12 @@ const Thread = ({comment, showDeleteModal, importantIDs}) => {
         {/* <Comment
         comment={comment} 
         showDeleteModal={showDeleteModal} 
-        importantIDs={importantIDs} />
+  importantIDs={importantIDs} /> */}
         {comment.replies.length != 0?
         <Replies 
         replies={comment.replies}
         showDeleteModal={showDeleteModal}
-        importantIDs={importantIDs} />: ''} */}
+        importantIDs={importantIDs} />: ''}
     </section>
   )
 }

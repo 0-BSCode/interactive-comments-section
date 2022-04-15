@@ -31,3 +31,31 @@
 .header__container *:not(:last-child) {
     margin-right: 0.9rem;
 }
+
+.header__btnContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.header__btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: none;
+    border: none;
+    width: 4.2rem;
+}
+
+.header__btn:hover {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.header__btnTxt {
+    padding-left: 0.5rem;
+}
+
+.header__deleteTxt {
+    color: var(--soft-red);
+}

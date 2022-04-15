@@ -5,14 +5,14 @@ import { handleReply } from '../../../../utils/btnActions'
 const DefaultHeader = ({importantIDs, dataid}) => {
   return (
     <button 
-    className="footer__btn footer__reply"
+    className="header__btn header__reply"
     onClick={e => handleReply(e, importantIDs)}
     dataid={dataid}>
       <img 
           src={replyImg} 
-          className="footer__btnImg footer__replyImg"
+          className="header__btnImg header__replyImg"
           alt="Reply to comment" />
-      <p className="footer__btnTxt footer__replyTxt">Reply</p>
+      <p className="header__btnTxt header__replyTxt">Reply</p>
   </button>
   )
 }

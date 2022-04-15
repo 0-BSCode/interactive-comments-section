@@ -6,26 +6,26 @@ import { handleEdit, showModal } from '../../../../utils/btnActions'
 const YourHeader = ({editing, comment,
                      showDeleteModal, importantIDs}) => {
   return (
-    <div className="footer__btnContainer">
+    <div className="header__btnContainer">
         <button 
-        className="footer__btn footer__delete"
+        className="header__btn header__delete"
         dataid={comment.id}
         onClick={e => showModal(e, showDeleteModal, importantIDs, comment)}>
             <img 
                 src={deleteImg} 
-                className="footer__btnImg footer__deleteImg"
+                className="header__btnImg header__deleteImg"
                 alt="Delete comment" />
-            <p className="footer__btnTxt footer__deleteTxt">Delete</p>
+            <p className="header__btnTxt header__deleteTxt">Delete</p>
         </button>
         <button 
-        className="footer__btn footer__edit"
+        className="header__btn header__edit"
         dataid={comment.id}
         onClick={e => handleEdit(e, editing)}>
             <img 
                 src={editImg} 
-                className="footer__btnImg footer__editImg"
+                className="header__btnImg header__editImg"
                 alt="Edit comment" />
-            <p className="footer__btnTxt footer__editTxt">Edit</p>
+            <p className="header__btnTxt header__editTxt">Edit</p>
         </button>
     </div>
   )
