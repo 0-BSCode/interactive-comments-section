@@ -111,6 +111,10 @@ textarea::placeholder {
     line-height: 1.3rem;
   }
 
+  .comment.comment {
+    padding-bottom: 0.5rem;
+  }
+
   .replies .comment.comment,
   .thread .replies .form.form {
     width: 95%;
