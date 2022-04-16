@@ -19,7 +19,7 @@ const Body = ({comment, replyingTo, editing}) => {
        <>
         <textarea 
         dataid={comment.id}
-        className="body__input"
+        className="body__input--desktop"
         placeholder="Add a comment..." 
         value={textInput}
         onChange={updateInput} />
@@ -30,7 +30,7 @@ const Body = ({comment, replyingTo, editing}) => {
             Update
         </button>
        </>:
-       <p className="body">
+       <p className="body--desktop">
         {replyingTo != undefined? 
         <>
           <b className="body__addressee">

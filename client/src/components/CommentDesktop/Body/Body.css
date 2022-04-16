@@ -1,5 +1,5 @@
-.body,
-.body__input {
+.body--desktop,
+.body__input--desktop {
     margin-top: 1rem;
     margin-bottom: 0;
 }
