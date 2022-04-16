@@ -55,6 +55,8 @@ LEARNINGS:
 5. How to use textarea
 6. Access global redux states from non-component functions
 7. Pass states to utility functions for clean code
+8. Render components based on screen size
+9. Stylesheets overriding each other despite not being used as an import
 
 TO-DO:
 
