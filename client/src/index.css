@@ -110,11 +110,7 @@ textarea::placeholder {
     padding: 0.7rem 1.5rem;
     line-height: 1.3rem;
   }
-
-  .comment.comment {
-    padding-bottom: 0.5rem;
-  }
-
+  
   .comment--desktop.comment--desktop {
     display: flex;
   }
@@ -148,10 +144,6 @@ textarea::placeholder {
     line-height: 1.3rem;
   }
 
-  .comment.comment {
-    padding-bottom: 0.5rem;
-  }
-
   .comment--desktop.comment--desktop {
     display: flex;
   }
@@ -183,10 +175,6 @@ textarea::placeholder {
     margin-inline: 1rem;
     padding: 0.7rem 1.5rem;
     line-height: 1.3rem;
-  }
-
-  .comment.comment {
-    padding-bottom: 0.5rem;
   }
 
   .replies .comment.comment,
