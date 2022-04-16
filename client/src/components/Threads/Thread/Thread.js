@@ -5,17 +5,21 @@ import Replies from '../../Replies/Replies'
 import './Thread.css'
 
 const Thread = ({comment, showDeleteModal, importantIDs}) => {
-  
+  let width = window.innerWidth;
+
   return (
     <section className="thread">
+      {
+        width < 1024?
+        <CommentMobile
+        comment={comment} 
+        showDeleteModal={showDeleteModal} 
+        importantIDs={importantIDs} />:
         <CommentDesktop 
         comment={comment} 
         showDeleteModal={showDeleteModal} 
-        importantIDs={importantIDs} />
-        {/* <Comment
-        comment={comment} 
-        showDeleteModal={showDeleteModal} 
-  importantIDs={importantIDs} /> */}
+        importantIDs={importantIDs} /> 
+      }
         {comment.replies.length != 0?
         <Replies 
         replies={comment.replies}

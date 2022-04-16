@@ -18,7 +18,7 @@
 
 /* Comment styles override */
 
-.replies .comment {
+.replies .comment--mobile {
     margin-bottom: 1rem;
     width: 100%;
 }

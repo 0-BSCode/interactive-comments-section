@@ -1,6 +1,5 @@
 import React from 'react'
 import './Comment.css'
-import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Header from './Header/Header'
 import Body from './Body/Body'
@@ -13,7 +12,7 @@ const Comment = ({comment, showDeleteModal, importantIDs}) => {
   return (
     <>
     <article
-      className="comment"
+      className="comment comment--desktop"
       id={comment.id}>
         <Sidebar comment={comment} />
         <div className="comment__content">

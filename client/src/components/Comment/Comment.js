@@ -15,7 +15,7 @@ const Comment = ({comment, showDeleteModal, importantIDs}) => {
   return (
     <>
     <article
-      className="comment"
+      className="comment comment--mobile"
       id={comment.id}>
         <Header 
         username={comment.user.username}

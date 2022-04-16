@@ -115,9 +115,84 @@ textarea::placeholder {
     padding-bottom: 0.5rem;
   }
 
+  .comment--desktop.comment--desktop {
+    display: flex;
+  }
+
+  .comment--mobile.comment--mobile {
+    display: none;
+  }
+
   .replies .comment.comment,
   .thread .replies .form.form {
     width: 95%;
+  }
+
+  .replies .comment .header {
+    width: 100% !important;
+  }
+
+  .replies__border.replies__border {
+    left: 2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  :root {
+    font-size: 18px;
+  }
+
+  textarea {
+    margin-inline: 1rem;
+    padding: 0.7rem 1.5rem;
+    line-height: 1.3rem;
+  }
+
+  .comment.comment {
+    padding-bottom: 0.5rem;
+  }
+
+  .comment--desktop.comment--desktop {
+    display: flex;
+  }
+
+  .comment--mobile.comment--mobile {
+    display: none;
+  }
+
+  .replies .comment.comment,
+  .thread .replies .form.form {
+    width: 95%;
+  }
+
+  .replies .comment .header {
+    width: 100% !important;
+  }
+
+  .replies__border.replies__border {
+    left: 2rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    font-size: 21px;
+  }
+
+  textarea {
+    margin-inline: 1rem;
+    padding: 0.7rem 1.5rem;
+    line-height: 1.3rem;
+  }
+
+  .comment.comment {
+    padding-bottom: 0.5rem;
+  }
+
+  .replies .comment.comment,
+  .thread .replies .form.form {
+    width: 95%;
+    margin-bottom: 1rem;
   }
 
   .replies .comment .header {
