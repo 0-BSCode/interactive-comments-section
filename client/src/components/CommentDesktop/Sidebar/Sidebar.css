@@ -9,6 +9,10 @@
     color: var(--moderate-blue);
 }
 
+.sidebar * {
+    color: var(--moderate-blue);
+}
+
 .sidebar__vote {
     background-repeat: no-repeat;
     background-position: center;

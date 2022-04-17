@@ -1,9 +1,12 @@
 .body--desktop,
 .body__input--desktop {
-    margin-top: 1rem;
+    margin-top: 0.9rem;
     margin-bottom: 0;
 }
 
+.body__input--desktop {
+    margin-bottom: 1rem;
+}
 .body__addressee {
     color: var(--moderate-blue);
 }

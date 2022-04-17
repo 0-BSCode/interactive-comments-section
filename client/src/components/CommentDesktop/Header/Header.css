@@ -50,6 +50,10 @@
     width: 4.2rem;
 }
 
+.header__btn * {
+    color: var(--moderate-blue);
+}
+
 .header__btn:hover {
     opacity: 0.4;
     cursor: pointer;

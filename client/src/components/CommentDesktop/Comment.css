@@ -1,9 +1,10 @@
 .comment--desktop {
     background-color: var(--white);
     border-radius: 0.5rem;
-    padding: 2rem;
+    padding: 1.5rem;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1.3rem;
 }
 
 .comment__content {
