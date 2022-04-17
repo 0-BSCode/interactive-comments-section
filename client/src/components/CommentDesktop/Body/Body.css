@@ -7,6 +7,7 @@
 .body__input--desktop {
     margin-bottom: 1rem;
 }
+
 .body__addressee {
     color: var(--moderate-blue);
 }
@@ -22,4 +23,9 @@
     font-weight: var(--font-500);
     font-size: 0.8rem;
     float: right;
+}
+
+.body__update:hover {
+    cursor: pointer;
+    opacity: 0.4;
 }
