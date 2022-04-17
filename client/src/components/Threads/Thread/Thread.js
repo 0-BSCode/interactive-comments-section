@@ -1,5 +1,5 @@
 import React from 'react'
-import CommentMobile from '../../Comment/Comment'
+import CommentMobile from '../../CommentMobile/Comment'
 import CommentDesktop from '../../CommentDesktop/Comment'
 import Replies from '../../Replies/Replies'
 import './Thread.css'

@@ -1,6 +1,6 @@
 import React from 'react'
 import CommentDesktop from '../CommentDesktop/Comment'
-import CommentMobile from '../Comment/Comment'
+import CommentMobile from '../CommentMobile/Comment'
 import './Replies.css'
 
 const Replies = ({replies, showDeleteModal, importantIDs}) => {
