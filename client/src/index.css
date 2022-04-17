@@ -156,6 +156,10 @@ textarea::placeholder {
     width: 2.1rem;
   }
 
+  .header__you.header__you {
+    font-size: 0.75rem;
+  }
+
   .form.form {
     padding: 1.5rem;
     border-radius: 0.6rem;
@@ -232,6 +236,10 @@ textarea::placeholder {
     width: 2.1rem;
   }
 
+  .header__you.header__you {
+    font-size: 0.75rem;
+  }
+
   .form.form {
     padding: 1.5rem;
     border-radius: 0.6rem;
@@ -306,6 +314,10 @@ textarea::placeholder {
   
   .header__img.header__img {
     width: 2.1rem;
+  }
+
+  .header__you.header__you {
+    font-size: 0.75rem;
   }
 
   .form.form {

@@ -50,6 +50,8 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
         commentTextArea.classList.add('form__input--warning');
         return;
     }
+    
+    commentTextArea.classList.remove('form__input--warning')
     dispatch(addComment({...newComment.get, content: textInput.get}))
   } else { // Create a reply to a comment
     // Remove username so it doesn't repeat
@@ -59,6 +61,10 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
         commentTextArea.classList.remove("form__input--warning")
         return;
     }
+
+    commentTextArea.classList.remove('form__input--warning')
+    replyTextArea.classList.remove('form__input--warning')
+
     const updatedComment = {...newComment.get, content: textInput.get.split(' ').slice(1,).join(' ')};
     
     // Check for comment that starts thread to add it to

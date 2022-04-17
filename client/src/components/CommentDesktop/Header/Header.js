@@ -10,7 +10,7 @@ const Header = ({comment, importantIDs, showDeleteModal, editing}) => {
   const dispatch = useDispatch();
 
   return (
-    <header className={isYou? "header header--desktop header--you": "header header--desktop"}>
+    <header className={"header header--desktop"}>
         <div className="header__container">
           <img
               className="header__img" 
