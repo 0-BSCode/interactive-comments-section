@@ -3,7 +3,6 @@ export function updateText(event, replyFor, textInput) {
     textInput.set(event.target.value);
 }
 
-// Buggy
 export function removeReply(importantIDs) {
     importantIDs.replyBtn.set(0);
 }

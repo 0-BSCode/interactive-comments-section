@@ -46,6 +46,7 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
   let commentTextArea = document.querySelector('.form__input');
   let replyTextArea = document.querySelector('.form__inputReply');
   if (replyFor == '') { // Create a comment
+
     if (textInput.get.length == 0) {
         commentTextArea.classList.add('form__input--warning');
         return;
@@ -56,6 +57,7 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
   } else { // Create a reply to a comment
     // Remove username so it doesn't repeat
     const finalContent = textInput.get.split(' ').slice(1,).join(' ');
+
     if (finalContent.length == 0) {
         replyTextArea.classList.add('form__input--warning')
         commentTextArea.classList.remove("form__input--warning")
@@ -65,7 +67,7 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
     commentTextArea.classList.remove('form__input--warning')
     replyTextArea.classList.remove('form__input--warning')
 
-    const updatedComment = {...newComment.get, content: textInput.get.split(' ').slice(1,).join(' ')};
+    const updatedComment = {...newComment.get, content: finalContent};
     
     // Check for comment that starts thread to add it to
     // its 'replies' property

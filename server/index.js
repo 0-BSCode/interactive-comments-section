@@ -5,9 +5,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import commentRoutes from './routes/comments.js'
 import replyRoutes from './routes/replies.js'
-import comments from './data.js'
 
-comments.test = "Hi"
 const app = express()
 dotenv.config()
 
@@ -19,7 +17,7 @@ app.use('/comments', commentRoutes)
 app.use('/replies', replyRoutes)
 
 app.get('/', (req, res) => {
-    res.send(comments)
+    res.send("Welcome to the API!")
 })
 
 const PORT = 5000
