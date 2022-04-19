@@ -8,6 +8,8 @@ export default (state=[...data.comments], action) => {
             return state.filter(comment => comment.id != action.payload);
         case 'UPDATE':
             return state.map(comment => comment.id == action.payload.id? action.payload: comment);
+        case 'FETCH':
+            return action.payload;
         default:
             return state;
     }
