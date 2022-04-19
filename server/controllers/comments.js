@@ -10,3 +10,16 @@ export const fetchComments = async (req, res) => {
         res.status(404).json({message: e.message})
     }
 }
+
+export const addComment = async (req, res) => {
+
+    const comment = req.body
+    const newComment = new Comment(comment)
+
+    try {
+        await newComment.save()
+        res.status(201).json(newComment)
+    } catch (e) {
+        res.status(409).json({message: e.message})
+    }
+}

@@ -1,7 +1,8 @@
 import express from 'express'
-
+import { fetchComments, addComment } from '../controllers/comments'
 const router = express.Router()
 
-router.get('/', (req, res) => res.send("Welcome to comments!"))
+router.get('/', fetchComments)
+router.post('/', addComment)
 
 export default router
