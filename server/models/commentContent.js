@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import data from '../data.json'
-import { replySchema } from './replyContent'
+import data from '../data.js'
+import { replySchema } from './replyContent.js'
 
 const commentSchema = mongoose.Schema({
     id: Number,

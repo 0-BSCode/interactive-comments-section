@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import data from '../data.json'
+import data from '../data.js'
 
 export const replySchema = mongoose.Schema({
     id: Number,

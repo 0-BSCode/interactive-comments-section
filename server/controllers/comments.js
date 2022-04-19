@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
-import Comment from '../models/commentContent'
-import Reply from '../models/replyContent'
+import Comment from '../models/commentContent.js'
+import Reply from '../models/replyContent.js'
 
 export const fetchComments = async (req, res) => {
     try {
@@ -19,6 +19,7 @@ export const addComment = async (req, res) => {
     try {
         await newComment.save()
         res.status(201).json(newComment)
+        console.log(newComment)
     } catch (e) {
         res.status(409).json({message: e.message})
     }
