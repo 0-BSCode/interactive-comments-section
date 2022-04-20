@@ -7,7 +7,7 @@ export default (state=[...data.comments], action) => {
         case 'DELETE':
             return state.filter(comment => comment.id != action.payload);
         case 'UPDATE':
-            return state.map(comment => comment.id == action.payload.id? action.payload: comment);
+            return state.map(comment => comment._id == action.payload._id? action.payload: comment);
         case 'FETCH':
             return action.payload;
         default:

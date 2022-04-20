@@ -21,16 +21,22 @@ export const addComment = (comment) => async (dispatch) => {
 
 }
 
-export const deleteComment = (commentId) => {
-    return {
-        type: 'DELETE',
-        payload: commentId
+export const deleteComment = (commentId) => async (dispatch) => {
+
+    try {
+        await api.deleteComment(commentId)
+        dispatch({type: 'DELETE', payload: commentId})
+    } catch (e) {
+        console.log(e.message)
     }
 }
 
-export const updateComment = (updatedComment) => {
-    return {
-        type: 'UPDATE',
-        payload: updatedComment
+export const updateComment = (comment) => async (dispatch) => {
+
+    try {
+        const updatedComment = await api.updateComment(comment)
+        dispatch({type: 'UPDATE', payload: updatedComment.data})
+    } catch (e) {
+        console.log(e.message)
     }
 }
