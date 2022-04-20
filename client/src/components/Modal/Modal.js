@@ -20,7 +20,7 @@ const Modal = ({showDeleteModal, deleteBtnId}) => {
       let parentComment;
 
       comments.forEach(comment => {
-          if (comment.id == deleteBtnId.get) {
+          if (comment._id == deleteBtnId.get) {
               isComment = true;
           }
 
@@ -31,7 +31,7 @@ const Modal = ({showDeleteModal, deleteBtnId}) => {
               }
           })
       })
-
+      
       if (isComment) { // Delete comment
           dispatch(deleteComment(deleteBtnId.get));
       } else { // Delete reply of comment

@@ -34,5 +34,8 @@ export const updateComment = async (req, res) => {
 
 export const deleteComment = async (req, res) => {
     const {id: _id} = req.params
-    console.log(_id)
+    if (!mongoose.Types.ObjectId.isValid(_id)) res.status(404).send("No comment with that ID!")
+
+    await Comment.findByIdAndDelete(_id)
+    res.json({message: "Comment deleted successfully!"})
 }
