@@ -15,7 +15,6 @@ const Form = ({replyFor, importantIDs}) => {
       {
         id: importantIDs.newComment.get,
         content: '',
-        createdAt: '1 minute ago',
         score: 0,
         user: {
             image: {
@@ -29,7 +28,6 @@ const Form = ({replyFor, importantIDs}) => {
     {
         id: importantIDs.newComment.get,
         content: '',
-        createdAt: '1 minute ago',
         score: 0,
         replyingTo: replyFor.user.username,
         user: {

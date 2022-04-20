@@ -39,6 +39,8 @@ export function getUpdatedComment(comment, payload) {
     return updatedComment;
   }
 
+// ! Issue: If reply is created, id property is no longer unique since it's reset w/ every refresh
+// ! Fix: Create replyToID property which contains ID of parent comment + number indicating which reply it is
 export function createComment(event, replyFor, dispatch, newComment, textInput, importantIDs) {
   event.preventDefault();
 

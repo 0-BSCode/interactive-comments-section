@@ -1,5 +1,6 @@
 import React from 'react'
 import './Header.css'
+import moment from 'moment'
 
 const Header = ({username, createdAt, imgSource, isYou}) => {
 
@@ -20,7 +21,7 @@ const Header = ({username, createdAt, imgSource, isYou}) => {
         }
         </h3>
         <p className="header__time">
-        {createdAt}
+        {moment(createdAt).fromNow()}
         </p>
     </header>
   )

@@ -61,5 +61,5 @@ export function decrementScore(event, comment, dispatch) {
 export function showModal(event, showDeleteModal, importantIDs, comment) {
     event.preventDefault();
     showDeleteModal.set(true);
-    importantIDs.deleteBtn.set(comment.id);
+    importantIDs.deleteBtn.set(comment._id);
 }

@@ -3,6 +3,7 @@ import './Header.css'
 import DefaultHeader from './HeaderVersions/DefaultHeader'
 import YourHeader from './HeaderVersions/YourHeader'
 import { useSelector, useDispatch } from 'react-redux'
+import moment from 'moment'
 
 const Header = ({comment, importantIDs, showDeleteModal, editing}) => {
   const currentUser = useSelector(state => state.currentUser);
@@ -27,7 +28,7 @@ const Header = ({comment, importantIDs, showDeleteModal, editing}) => {
           }
           </h3>
           <p className="header__time">
-          {comment.createdAt}
+          {moment(comment.createdAt).fromNow()}
           </p>
         </div>
         {

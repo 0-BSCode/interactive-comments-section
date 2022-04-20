@@ -4,8 +4,11 @@ import FormDesktop from './components/FormDesktop/Form'
 import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
 import {useState, useEffect} from 'react'
+import { useDispatch } from 'react-redux';
+import { fetchComments } from './actions/comments';
 
 function App() {
+  const dispatch = useDispatch();
   const [newCommentId, setNewCommentId] = useState(5);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteBtnId, setDeleteBtnId] = useState(0);
@@ -22,6 +25,10 @@ function App() {
       modal.close();
     }
   })
+
+  useEffect(() => {
+    dispatch(fetchComments());
+  }, [dispatch])
 
   return (
     <div className="app">
@@ -57,6 +64,7 @@ LEARNINGS:
 7. Pass states to utility functions for clean code
 8. Render components based on screen size
 9. Stylesheets overriding each other despite not being used as an import
+10. Sending objects via express patch
 
 TO-DO:
 
