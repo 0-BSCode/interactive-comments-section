@@ -29,7 +29,6 @@ function App() {
   })
 
   useEffect(() => {
-
     dispatch(fetchComments());
   }, [dispatch])
 
@@ -71,8 +70,8 @@ LEARNINGS:
 
 TO-DO:
 
-1. Responsive design
-2. Integrate moment for accurate time stamps
-3. Backend Setup
+1. Update variables for mobile design (look at desktop counterpart)
+2. Update states (especially form since a lot of the variables are given a default value in the backend)
+3. Go over variables (remove duplicate ones)
 
 */

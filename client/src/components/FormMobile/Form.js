@@ -10,7 +10,6 @@ const Form = ({replyFor, importantIDs}) => {
   const dispatch = useDispatch()
 
   const [textInput, setTextInput] = useState(replyFor != ''? `@${replyFor.user.username} `: '')
-  // Only comment content are needed. 
   const [newComment, setNewComment] = useState(
       replyFor == ''?
       {
