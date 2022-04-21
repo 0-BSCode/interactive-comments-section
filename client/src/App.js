@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
 import {useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux';
-import { fetchComments } from './actions/comments';
+import { fetchComments, addComment } from './actions/comments';
 
 function App() {
   const dispatch = useDispatch();
