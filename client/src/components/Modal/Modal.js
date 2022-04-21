@@ -25,7 +25,7 @@ const Modal = ({showDeleteModal, deleteBtnId}) => {
           }
 
           comment.replies.forEach(reply => {
-              if (reply.id == deleteBtnId.get) {
+              if (reply._id == deleteBtnId.get) {
                   parentComment = comment;
                   isComment = false;
               }
@@ -35,7 +35,7 @@ const Modal = ({showDeleteModal, deleteBtnId}) => {
       if (isComment) { // Delete comment
           dispatch(deleteComment(deleteBtnId.get));
       } else { // Delete reply of comment
-          const updatedReplies = parentComment.replies.filter(reply => reply.id != deleteBtnId.get);
+          const updatedReplies = parentComment.replies.filter(reply => reply._id != deleteBtnId.get);
           const updatedComment = {...parentComment, replies: [...updatedReplies]};
           dispatch(updateComment(updatedComment));
       }

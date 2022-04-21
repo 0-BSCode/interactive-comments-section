@@ -7,7 +7,7 @@ export function getUpdatedComment(comment, payload) {
     let isReply = true;
 
     comments.forEach(comm => {
-      if (comm.id == comment.id) {  // If comment
+      if (comm._id == comment._id) {  // If comment
         updatedComment[payload.property] = payload.value;
         isReply = false;
       } 
@@ -21,7 +21,7 @@ export function getUpdatedComment(comment, payload) {
         let updatedReplies = [];
 
         comm.replies.forEach(reply => {
-          if (reply.id == comment.id) {
+          if (reply._id == comment._id) {
             reply[payload.property] = payload.value;
             breakLoop = true;
           }
@@ -39,8 +39,6 @@ export function getUpdatedComment(comment, payload) {
     return updatedComment;
   }
 
-// ! Issue: If reply is created, id property is no longer unique since it's reset w/ every refresh
-// ! Fix: Create replyToID property which contains ID of parent comment + number indicating which reply it is
 export function createComment(event, replyFor, dispatch, newComment, textInput, importantIDs) {
   event.preventDefault();
 
@@ -76,12 +74,12 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
     let parentComment = replyFor;
     comments.forEach(comment => {
         // Check if reply is to a comment
-        if (comment.id == replyFor.id) {
+        if (comment._id == replyFor._id) {
             parentComment = comment
         }
         // Check if reply is to a reply
         comment.replies.forEach(reply => {
-            if (reply.id == replyFor.id) {
+            if (reply._id == replyFor._id) {
                 parentComment = comment
             }
         })
@@ -90,12 +88,14 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
         {...parentComment, replies: [...parentComment["replies"], updatedComment]}
     ))
   }
+
   if (replyFor != '') {
       importantIDs.replyBtn.set(0);
       textInput.set(replyFor.user.username);
   } else {
       textInput.set('');
   }
+
   importantIDs.newComment.set(importantIDs.newComment.get+1);
   newComment.set({...newComment.get, id: importantIDs.newComment.get+1})
 }

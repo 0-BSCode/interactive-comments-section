@@ -13,7 +13,6 @@ const Form = ({replyFor, importantIDs}) => {
   const [newComment, setNewComment] = useState(
       replyFor == ''?
       {
-        id: importantIDs.newComment.get,
         content: '',
         score: 0,
         user: {
@@ -26,7 +25,6 @@ const Form = ({replyFor, importantIDs}) => {
         replies: []
       }:
     {
-        id: importantIDs.newComment.get,
         content: '',
         score: 0,
         replyingTo: replyFor.user.username,

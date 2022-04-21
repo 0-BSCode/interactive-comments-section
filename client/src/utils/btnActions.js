@@ -15,8 +15,8 @@ export function handleReply(event, importantIDs) {
 export function handleUpdate(event, comment, dispatch, editing) {
     event.preventDefault();
 
-    let textArea = document.querySelector(`.body__input[dataid="${comment.id}"]`);
-    if (textArea == null) textArea = document.querySelector(`.body__input--desktop[dataid="${comment.id}"]`);
+    let textArea = document.querySelector(`.body__input[dataid="${comment._id}"]`);
+    if (textArea == null) textArea = document.querySelector(`.body__input--desktop[dataid="${comment._id}"]`);
 
     let finalContent = comment.replyingTo != undefined? textArea.value.split(' ').slice(1).join(' '): textArea.value;
 

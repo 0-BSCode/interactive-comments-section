@@ -15,7 +15,7 @@ const Threads = ({showDeleteModal, importantIDs}) => {
           comment={comment}
           showDeleteModal={showDeleteModal}
           importantIDs={importantIDs}
-          key={comment.id}
+          key={comment._id}
           />
         ))}
     </div>

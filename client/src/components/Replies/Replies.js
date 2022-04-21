@@ -21,7 +21,7 @@ const Replies = ({replies, showDeleteModal, importantIDs}) => {
             comment={reply} 
             showDeleteModal={showDeleteModal}
             importantIDs={importantIDs}
-            key={reply.id} />
+            key={reply._id} />
         ))}
     </div>
   )
