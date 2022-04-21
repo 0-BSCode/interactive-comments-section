@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 import data from '../data.js'
 
 const replySchema = mongoose.Schema({
-    id: Number,
     content: String,
     createdAt: {
         type: Date,
