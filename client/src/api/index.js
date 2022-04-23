@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/comments'
+// const url = 'http://localhost:5000/comments'
+const url = 'https://interactive-comments-section-backend.vercel.app/comments'
 
 export const fetchComments = () => axios.get(url)
 export const addComment = (newComment) => axios.post(url, newComment)
