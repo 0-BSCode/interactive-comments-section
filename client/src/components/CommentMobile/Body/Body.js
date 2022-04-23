@@ -1,10 +1,14 @@
 import React from 'react'
 import './Body.css'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { handleUpdate } from '../../../utils/btnActions'
 
-const Body = ({comment, replyingTo, editing}) => {
-
-  const [textInput, setTextInput] = useState(replyingTo != undefined? `@${replyingTo} ${comment.content}`: comment.content)
+const Body = ({comment, editing}) => {
+  const dispatch = useDispatch()
+  const [textInput, setTextInput] = useState(comment.replyingTo != undefined? 
+                                            `@${comment.replyingTo} ${comment.content}`: 
+                                            comment.content)
 
   const updateInput = e => {
     setTextInput(e.target.value);
@@ -12,18 +16,19 @@ const Body = ({comment, replyingTo, editing}) => {
 
   return (
     <>
-      {editing?
+      {editing.get?
        <textarea 
-       dataid={comment.id}
+       dataid={comment._id}
        className="body__input"
        placeholder="Add a comment..." 
        value={textInput}
-       onChange={updateInput} />:
+       onChange={updateInput}
+       onKeyPress={e => e.key == 'Enter'? handleUpdate(e, comment, dispatch, editing): ''} />:
        <p className="body">
-        {replyingTo != undefined? 
+        {comment.replyingTo != undefined? 
         <>
           <b className="body__addressee">
-            {`@${replyingTo} `}
+            {`@${comment.replyingTo} `}
           </b>
           {comment.content}
         </>:

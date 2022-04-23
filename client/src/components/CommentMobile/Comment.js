@@ -16,17 +16,14 @@ const Comment = ({comment, showDeleteModal, importantIDs}) => {
     <>
     <article
       className="comment comment--mobile"
-      id={comment.id}>
+      id={comment._id}>
         <Header 
-        username={comment.user.username}
-        createdAt={comment.createdAt}
-        imgSource={'.' + comment.user.image.png}
+        comment={comment}
         isYou={currentUser.username === comment.user.username}
         />
         <Body 
         comment={comment}
-        replyingTo={comment.replyingTo}
-        editing={editing} />
+        editing={{get: editing, set: setEditing}} />
         <Footer 
         comment={comment}
         isYou={currentUser.username === comment.user.username}
@@ -36,7 +33,7 @@ const Comment = ({comment, showDeleteModal, importantIDs}) => {
         />
     </article>
     {
-      importantIDs.replyBtn.get == comment.id?
+      importantIDs.replyBtn.get == comment._id?
       <FormMobile
         replyFor={comment}
         importantIDs={importantIDs} />: ''

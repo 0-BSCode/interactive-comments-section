@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.form--desktop {
+    display: flex;
+}
+
 .form--reply {
     margin-top: 1rem;
 }

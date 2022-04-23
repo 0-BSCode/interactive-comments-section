@@ -1,6 +1,7 @@
 import './App.css';
 import Threads from './components/Threads/Threads'
 import FormDesktop from './components/FormDesktop/Form'
+import FormMobile from './components/FormMobile/Form'
 import Footer from './components/Footer/Footer'
 import Modal from './components/Modal/Modal'
 import {useState, useEffect} from 'react'
@@ -12,6 +13,8 @@ function App() {
   const [newCommentId, setNewCommentId] = useState(5);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteBtnId, setDeleteBtnId] = useState(0);
+  let width = window.innerWidth;
+
   let importantIDs = {
     "deleteBtn": {get: deleteBtnId, set: setDeleteBtnId},
     "newComment": {get: newCommentId, set: setNewCommentId}
@@ -40,8 +43,13 @@ function App() {
         <Threads 
         showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
         importantIDs={importantIDs} />
-        <FormDesktop 
-        importantIDs={importantIDs} />
+        {
+          width < 1024?
+          <FormMobile
+          importantIDs={importantIDs} />:
+          <FormDesktop 
+          importantIDs={importantIDs} />          
+        }
         </main>
       <Footer />
     </div>

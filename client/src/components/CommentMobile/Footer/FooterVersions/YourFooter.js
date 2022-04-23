@@ -11,13 +11,13 @@ const YourFooter = ({editing, comment, dispatch,
         <button 
         className="footer__update"
         onClick={e => handleUpdate(e, comment, dispatch, editing)}
-        dataid={comment.id}>
+        dataid={comment._id}>
             Update
         </button>:
         <div className="footer__btnContainer">
             <button 
             className="footer__btn footer__delete"
-            dataid={comment.id}
+            dataid={comment._id}
             onClick={e => showModal(e, showDeleteModal, importantIDs, comment)}>
                 <img 
                     src={deleteImg} 
@@ -27,7 +27,7 @@ const YourFooter = ({editing, comment, dispatch,
             </button>
             <button 
             className="footer__btn footer__edit"
-            dataid={comment.id}
+            dataid={comment._id}
             onClick={e => handleEdit(e, editing)}>
                 <img 
                     src={editImg} 

@@ -14,7 +14,7 @@ const Form = ({replyFor, importantIDs}) => {
 
   return (
     <form 
-        className="form"
+        className="form form--desktop"
         onSubmit={e => createComment(e, replyFor, dispatch, TextInput, importantIDs)}>
         <img 
             src={`.${currentUser.image.png}`} 
