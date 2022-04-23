@@ -1,7 +1,7 @@
 import React from 'react'
 import './Form.css'
 import {useSelector, useDispatch} from 'react-redux'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { createComment } from '../../utils/commentProcessing'
 import { updateText, removeReply, unfocusForm } from '../../utils/formActions'
 
@@ -11,8 +11,6 @@ const Form = ({replyFor, importantIDs}) => {
 
   const [textInput, setTextInput] = useState(replyFor != ''? `@${replyFor.user.username} `: '')
   const TextInput = {get: textInput, set: setTextInput};
-
-
 
   return (
     <form 
