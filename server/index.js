@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     res.send("Welcome to the API!")
 })
 
-const PORT = 5000
+const PORT = process.env.PORT || 8000
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => console.log(`App is running on port ${PORT}`)))
