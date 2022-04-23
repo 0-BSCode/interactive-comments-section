@@ -1,7 +1,7 @@
 import React from 'react'
 import './Form.css'
 import {useSelector, useDispatch} from 'react-redux'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { createComment } from '../../utils/commentProcessing'
 import { updateText, removeReply, unfocusForm } from '../../utils/formActions'
 
@@ -11,6 +11,8 @@ const Form = ({replyFor, importantIDs}) => {
 
   const [textInput, setTextInput] = useState(replyFor != ''? `@${replyFor.user.username} `: '')
   const TextInput = {get: textInput, set: setTextInput};
+
+
 
   return (
     <form 
@@ -24,7 +26,8 @@ const Form = ({replyFor, importantIDs}) => {
             placeholder="Add a comment..." 
             value={textInput}
             onChange={e => updateText(e, replyFor, TextInput)}
-            onClick={replyFor == ''? removeReply(importantIDs): unfocusForm} />
+            onClick={replyFor == ''? removeReply(importantIDs): unfocusForm}
+            onKeyPress={e => e.key == 'Enter'? createComment(e, replyFor, dispatch, TextInput, importantIDs): ''} />
         <button 
             className="form__footerBtn"
             type="submit">
