@@ -95,6 +95,4 @@ export function createComment(event, replyFor, dispatch, textInput, importantIDs
   } else {
       textInput.set('');
   }
-
-  importantIDs.newComment.set(importantIDs.newComment.get+1);
 }

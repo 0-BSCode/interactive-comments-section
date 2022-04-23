@@ -10,14 +10,12 @@ import { fetchComments } from './actions/comments';
 
 function App() {
   const dispatch = useDispatch();
-  const [newCommentId, setNewCommentId] = useState(5);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteBtnId, setDeleteBtnId] = useState(0);
   let width = window.innerWidth;
 
   let importantIDs = {
     "deleteBtn": {get: deleteBtnId, set: setDeleteBtnId},
-    "newComment": {get: newCommentId, set: setNewCommentId}
   }
 
   useEffect(() => {
@@ -77,8 +75,7 @@ LEARNINGS:
 
 TO-DO:
 
-1. Update variables for mobile design (look at desktop counterpart)
-2. Go over variables (remove duplicate ones)
-3. Add loading animations
+1. Go over variables (remove duplicate ones)
+2. Add loading animations
 
 */
