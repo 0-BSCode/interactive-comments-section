@@ -71,6 +71,6 @@ TO-DO:
 
 1. Update variables for mobile design (look at desktop counterpart)
 2. Go over variables (remove duplicate ones)
-3. Allow entries to be created/updated by pressing 'Enter'
+3. Add loading animations
 
 */
