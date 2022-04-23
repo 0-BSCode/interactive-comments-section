@@ -29,25 +29,27 @@ export function handleEdit(event, editing) {
     editing.set(!editing.get);
 }
 
-export function incrementScore(event, comment, dispatch) {
+export async function incrementScore(event, comment, dispatch) {
     event.preventDefault();
 
     let updatedComment = getUpdatedComment(comment, {property: 'score', value: comment.score + 1});
-    dispatch(updateComment(updatedComment));
+    await dispatch(updateComment(updatedComment));
 
     updatedComment = getUpdatedComment(comment, {property: 'lastVote', value: 'UP'});
-    dispatch(updateComment(updatedComment));
+    await dispatch(updateComment(updatedComment));
 
 }
 
-export function decrementScore(event, comment, dispatch) {
+export async function decrementScore(event, comment, dispatch) {
     event.preventDefault();
 
+    // Wait for one update to complete before doing the next
+    // to prevent bugs
     let updatedComment = getUpdatedComment(comment, {property: 'score', value: comment.score - 1});
-    dispatch(updateComment(updatedComment));
+    await dispatch(updateComment(updatedComment));
 
     updatedComment = getUpdatedComment(comment, {property: 'lastVote', value: 'DOWN'});
-    dispatch(updateComment(updatedComment));
+    await dispatch(updateComment(updatedComment));
 
 }
 
