@@ -38,9 +38,9 @@ export function incrementScore(event, comment, dispatch) {
 
     disableBtn(event.target);
 
-    let minusBtn = document.querySelector(`.footer__voteDown[dataid="${comment.id}"]`);
+    let minusBtn = document.querySelector(`.footer__voteDown[dataid="${comment._id}"]`);
 
-    if (minusBtn == null) minusBtn = document.querySelector(`.sidebar__voteDown[dataid="${comment.id}"]`);
+    if (minusBtn == null) minusBtn = document.querySelector(`.sidebar__voteDown[dataid="${comment._id}"]`);
     enableBtn(minusBtn);
 }
 
@@ -52,8 +52,8 @@ export function decrementScore(event, comment, dispatch) {
 
     disableBtn(event.target);
 
-    let plusBtn = document.querySelector(`.footer__voteUp[dataid="${comment.id}"]`);
-    if (plusBtn == null) plusBtn = document.querySelector(`.sidebar__voteUp[dataid="${comment.id}"]`);
+    let plusBtn = document.querySelector(`.footer__voteUp[dataid="${comment._id}"]`);
+    if (plusBtn == null) plusBtn = document.querySelector(`.sidebar__voteUp[dataid="${comment._id}"]`);
 
     enableBtn(plusBtn);
 }

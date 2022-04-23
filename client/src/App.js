@@ -7,7 +7,6 @@ import {useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux';
 import { fetchComments } from './actions/comments';
 
-
 function App() {
   const dispatch = useDispatch();
   const [newCommentId, setNewCommentId] = useState(5);
@@ -29,7 +28,7 @@ function App() {
   })
 
   useEffect(() => {
-    dispatch(fetchComments());
+    dispatch(fetchComments)
   }, [dispatch])
 
   return (

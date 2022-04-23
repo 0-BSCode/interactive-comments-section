@@ -27,6 +27,10 @@ const replySchema = mongoose.Schema({
             type: String,
             default: data.currentUser.username
         }
+    },
+    lastVote: {
+        type: String,
+        default: ''
     }
 })
 
@@ -56,6 +60,10 @@ const commentSchema = mongoose.Schema({
             type: String,
             default: data.currentUser.username
         }
+    },
+    lastVote: {
+        type: String,
+        default: ''
     },
     replies: [replySchema]
 })

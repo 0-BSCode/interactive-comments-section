@@ -41,7 +41,7 @@ const Header = ({comment, importantIDs, showDeleteModal, editing}) => {
           importantIDs={importantIDs} />:
           <DefaultHeader
           importantIDs={importantIDs}
-          dataid={comment.id}  />
+          dataid={comment._id}  />
         }
     </header>
   )

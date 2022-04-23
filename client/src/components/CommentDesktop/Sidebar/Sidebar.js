@@ -10,11 +10,11 @@ const Sidebar = ({comment}) => {
     <div className="sidebar">
         <button 
         className="sidebar__vote sidebar__voteUp"
-        dataid={comment.id}
+        dataid={comment._id}
         onClick={e => incrementScore(e, comment, dispatch)} />
         <p className="sidebar__likeCount">{comment.score}</p>
         <button className="sidebar__vote sidebar__voteDown"
-        dataid={comment.id}
+        dataid={comment._id}
         onClick={e => decrementScore(e, comment, dispatch)} />
     </div>
   )

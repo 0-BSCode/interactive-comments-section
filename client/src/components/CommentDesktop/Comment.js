@@ -13,7 +13,7 @@ const Comment = ({comment, showDeleteModal, importantIDs}) => {
     <>
     <article
       className="comment comment--desktop"
-      id={comment.id}>
+      id={comment._id}>
         <Sidebar comment={comment} />
         <div className="comment__content">
           <Header
@@ -30,7 +30,7 @@ const Comment = ({comment, showDeleteModal, importantIDs}) => {
         </div>
     </article>
     {
-      importantIDs.replyBtn.get == comment.id?
+      importantIDs.replyBtn.get == comment._id?
       <Form
         replyFor={comment}
         importantIDs={importantIDs} />: ''
