@@ -28,7 +28,7 @@ function App() {
   })
 
   useEffect(() => {
-    dispatch(fetchComments)
+    dispatch(fetchComments())
   }, [dispatch])
 
   return (

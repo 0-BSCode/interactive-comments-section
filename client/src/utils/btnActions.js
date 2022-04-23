@@ -1,5 +1,4 @@
 import { updateComment } from '../actions/comments'
-import { enableBtn, disableBtn } from './toggleBtn';
 import {getUpdatedComment} from './commentProcessing'
 
 
@@ -36,12 +35,9 @@ export function incrementScore(event, comment, dispatch) {
     let updatedComment = getUpdatedComment(comment, {property: 'score', value: comment.score + 1});
     dispatch(updateComment(updatedComment));
 
-    disableBtn(event.target);
+    updatedComment = getUpdatedComment(comment, {property: 'lastVote', value: 'UP'});
+    dispatch(updateComment(updatedComment));
 
-    let minusBtn = document.querySelector(`.footer__voteDown[dataid="${comment._id}"]`);
-
-    if (minusBtn == null) minusBtn = document.querySelector(`.sidebar__voteDown[dataid="${comment._id}"]`);
-    enableBtn(minusBtn);
 }
 
 export function decrementScore(event, comment, dispatch) {
@@ -50,12 +46,9 @@ export function decrementScore(event, comment, dispatch) {
     let updatedComment = getUpdatedComment(comment, {property: 'score', value: comment.score - 1});
     dispatch(updateComment(updatedComment));
 
-    disableBtn(event.target);
+    updatedComment = getUpdatedComment(comment, {property: 'lastVote', value: 'DOWN'});
+    dispatch(updateComment(updatedComment));
 
-    let plusBtn = document.querySelector(`.footer__voteUp[dataid="${comment._id}"]`);
-    if (plusBtn == null) plusBtn = document.querySelector(`.sidebar__voteUp[dataid="${comment._id}"]`);
-
-    enableBtn(plusBtn);
 }
 
 export function showModal(event, showDeleteModal, importantIDs, comment) {

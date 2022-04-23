@@ -9,11 +9,18 @@ const Sidebar = ({comment}) => {
   return (
     <div className="sidebar">
         <button 
-        className="sidebar__vote sidebar__voteUp"
+        disabled={comment.lastVote == 'UP'}
+        className={comment.lastVote == 'UP'? 
+                  "sidebar__vote sidebar__voteUp sidebar__vote--disabled sidebar__voteUp--disabled":
+                  "sidebar__vote sidebar__voteUp"}
         dataid={comment._id}
         onClick={e => incrementScore(e, comment, dispatch)} />
         <p className="sidebar__likeCount">{comment.score}</p>
-        <button className="sidebar__vote sidebar__voteDown"
+        <button 
+        disabled={comment.lastVote == 'DOWN'}
+        className={comment.lastVote == 'DOWN'? 
+                  "sidebar__vote sidebar__voteDown sidebar__vote--disabled sidebar__voteDown--disabled":
+                  "sidebar__vote sidebar__voteDown"}
         dataid={comment._id}
         onClick={e => decrementScore(e, comment, dispatch)} />
     </div>
