@@ -22,7 +22,8 @@ const Body = ({comment, replyingTo, editing}) => {
         className="body__input--desktop"
         placeholder="Add a comment..." 
         value={textInput}
-        onChange={updateInput} />
+        onChange={updateInput}
+        onKeyPress={e => e.key == 'Enter'? handleUpdate(e, comment, dispatch, editing): ''} />
         <button 
         className="body__update"
         onClick={e => handleUpdate(e, comment, dispatch, editing)}
