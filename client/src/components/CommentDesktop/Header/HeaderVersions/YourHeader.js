@@ -9,7 +9,7 @@ const YourHeader = ({editing, comment,
     <div className="header__btnContainer">
         <button 
         className="header__btn header__delete"
-        dataid={comment.id}
+        dataid={comment._id}
         onClick={e => showModal(e, showDeleteModal, importantIDs, comment)}>
             <img 
                 src={deleteImg} 
@@ -19,7 +19,7 @@ const YourHeader = ({editing, comment,
         </button>
         <button 
         className="header__btn header__edit"
-        dataid={comment.id}
+        dataid={comment._id}
         onClick={e => handleEdit(e, editing)}>
             <img 
                 src={editImg} 

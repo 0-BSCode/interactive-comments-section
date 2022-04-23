@@ -39,7 +39,7 @@ export function getUpdatedComment(comment, payload) {
     return updatedComment;
   }
 
-export function createComment(event, replyFor, dispatch, newComment, textInput, importantIDs) {
+export function createComment(event, replyFor, dispatch, textInput, importantIDs) {
   event.preventDefault();
 
   const comments = store.getState().comments;
@@ -53,7 +53,7 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
     }
     
     commentTextArea.classList.remove('form__input--warning')
-    dispatch(addComment({...newComment.get, content: textInput.get}))
+    dispatch(addComment({content: textInput.get, replies: []}))
   } else { // Create a reply to a comment
     // Remove username so it doesn't repeat
     const finalContent = textInput.get.split(' ').slice(1,).join(' ');
@@ -67,7 +67,7 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
     commentTextArea.classList.remove('form__input--warning')
     replyTextArea.classList.remove('form__input--warning')
 
-    const updatedComment = {...newComment.get, content: finalContent};
+    const updatedComment = {content: finalContent};
     
     // Check for comment that starts thread to add it to
     // its 'replies' property
@@ -97,5 +97,4 @@ export function createComment(event, replyFor, dispatch, newComment, textInput, 
   }
 
   importantIDs.newComment.set(importantIDs.newComment.get+1);
-  newComment.set({...newComment.get, id: importantIDs.newComment.get+1})
 }

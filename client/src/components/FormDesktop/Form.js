@@ -10,41 +10,12 @@ const Form = ({replyFor, importantIDs}) => {
   const dispatch = useDispatch()
 
   const [textInput, setTextInput] = useState(replyFor != ''? `@${replyFor.user.username} `: '')
-  const [newComment, setNewComment] = useState(
-      replyFor == ''?
-      {
-        content: '',
-        score: 0,
-        user: {
-            image: {
-                png: currentUser.image.png,
-                webp: currentUser.image.webp
-            },
-            username: currentUser.username
-        },
-        replies: []
-      }:
-    {
-        content: '',
-        score: 0,
-        replyingTo: replyFor.user.username,
-        user: {
-            image: {
-              png: currentUser.image.png,
-              webp: currentUser.image.webp
-            },
-            username: currentUser.username
-        }
-      }
-    )
-
-  const NewComment = {get: newComment, set: setNewComment};
   const TextInput = {get: textInput, set: setTextInput};
 
   return (
     <form 
         className="form"
-        onSubmit={e => createComment(e, replyFor, dispatch, NewComment, TextInput, importantIDs)}>
+        onSubmit={e => createComment(e, replyFor, dispatch, TextInput, importantIDs)}>
         <img 
             src={`.${currentUser.image.png}`} 
             className="form__footerImg" />

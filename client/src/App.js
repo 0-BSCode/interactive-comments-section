@@ -72,7 +72,6 @@ TO-DO:
 1. Update variables for mobile design (look at desktop counterpart)
 2. Update states (especially form since a lot of the variables are given a default value in the backend)
 3. Go over variables (remove duplicate ones)
-4. Fix voting functionality (if you reload the page you can vote again)
-  - Create boolean property in comment that tells if currentUser already upvoted/downvoted comment
+4. Allow entries to be created/updated by pressing 'Enter'
 
 */
