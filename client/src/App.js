@@ -29,7 +29,13 @@ function App() {
   })
 
   useEffect(() => {
-    dispatch(fetchComments())
+    async function getData() {
+      const loader = document.querySelector(".app__loader")
+      await dispatch(fetchComments())
+      loader.style.display = 'none';
+    }
+
+    getData()
   }, [dispatch])
 
   return (
@@ -37,8 +43,8 @@ function App() {
       <Modal 
       showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
       deleteBtnId={importantIDs.deleteBtn} />
-      <div className="loader" />
       <main className="app__main">
+        <div className="app__loader" />
         <Threads 
         showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
         importantIDs={importantIDs} />

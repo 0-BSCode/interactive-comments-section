@@ -6,3 +6,38 @@
   width: 21.5rem;
   margin: 1.5rem auto;
 }
+
+.app__loader {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  background: linear-gradient(var(--moderate-blue) 0%, var(--light-gray-blue) 100%);
+  margin-bottom: 1.3rem;
+  margin-inline: auto;
+  position: relative;
+  animation-name: spin;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.app__loader::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--vlight-gray);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
