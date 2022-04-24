@@ -82,8 +82,6 @@ LEARNINGS:
 
 TO-DO:
 
-1. Go over variables (remove duplicate ones)
-2. Add loading animations
-3. Work on README
+1. Work on README
 
 */
