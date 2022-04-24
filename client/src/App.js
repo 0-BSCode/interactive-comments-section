@@ -37,6 +37,7 @@ function App() {
       <Modal 
       showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}
       deleteBtnId={importantIDs.deleteBtn} />
+      <div className="loader" />
       <main className="app__main">
         <Threads 
         showDeleteModal={{get: showDeleteModal, set: setShowDeleteModal}}

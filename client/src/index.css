@@ -118,7 +118,11 @@ textarea::placeholder {
     line-height: 1.3rem;
     border-radius: 0.5rem;
   }
-  
+
+  .app__main.app__main {
+    width: 43rem;
+  }
+
   .thread.thread {
     margin-bottom: 1.3rem;
   }
@@ -192,174 +196,10 @@ textarea::placeholder {
   :root {
     font-size: 18px;
   }
-
-  h3 {
-    font-size: 0.95rem;
-  }
-
-  p {
-    font-size: 0.93rem;
-  }
-
-  textarea {
-    padding: 0.7rem 1.5rem;
-    line-height: 1.3rem;
-    border-radius: 0.5rem;
-  }
-  
-  .thread.thread {
-    margin-bottom: 1.3rem;
-  }
-
-  .comment--desktop.comment--desktop {
-    display: flex;
-  }
-
-  .comment--mobile.comment--mobile {
-    display: none;
-  }
-
-  .replies .comment.comment,
-  .thread .replies .form.form {
-    width: 95%;
-  }
-
-  .thread .replies .form.form {
-    margin-bottom: 1.3rem;
-  }
-
-  .replies.replies {
-    margin-top: 1.3rem;
-  }
-
-  .replies .comment .header {
-    width: 100% !important;
-  }
-
-  .replies__border.replies__border {
-    left: 2rem;
-  }
-  
-  .header__img.header__img {
-    width: 2.1rem;
-  }
-
-  .header__you.header__you {
-    font-size: 0.75rem;
-  }
-
-  .form.form {
-    padding: 1.5rem;
-    border-radius: 0.6rem;
-  }
-
-  .form__footerBtn.form__footerBtn {
-      width: 9rem;
-  }
-
-  .form__input,
-  .form__inputReply {
-    margin-inline: 1rem;
-  }
-
-  .form__footerImg.form__footerImg {
-      width: 2.6rem;
-      height: 2.6rem;
-  }
-
-  .modal__btn.modal__btn {
-    font-size: 0.9rem;
-  }
-
-  .modal__description.modal__description {
-    font-size: 0.95rem;
-  }
 }
 
 @media screen and (min-width: 1440px) {
   :root {
     font-size: 21px;
-  }
-
-  h3 {
-    font-size: 0.95rem;
-  }
-
-  p {
-    font-size: 0.93rem;
-  }
-
-  textarea {
-    padding: 0.7rem 1.5rem;
-    line-height: 1.3rem;
-    border-radius: 0.5rem;
-  }
-  
-  .thread.thread {
-    margin-bottom: 1.3rem;
-  }
-
-  .comment--desktop.comment--desktop {
-    display: flex;
-  }
-
-  .comment--mobile.comment--mobile {
-    display: none;
-  }
-
-  .replies .comment.comment,
-  .thread .replies .form.form {
-    width: 95%;
-  }
-
-  .thread .replies .form.form {
-    margin-bottom: 1.3rem;
-  }
-
-  .replies.replies {
-    margin-top: 1.3rem;
-  }
-
-  .replies .comment .header {
-    width: 100% !important;
-  }
-
-  .replies__border.replies__border {
-    left: 2rem;
-  }
-  
-  .header__img.header__img {
-    width: 2.1rem;
-  }
-
-  .header__you.header__you {
-    font-size: 0.75rem;
-  }
-
-  .form.form {
-    padding: 1.5rem;
-    border-radius: 0.6rem;
-  }
-
-  .form__footerBtn.form__footerBtn {
-      width: 9rem;
-  }
-
-  .form__input,
-  .form__inputReply {
-    margin-inline: 1rem;
-  }
-
-  .form__footerImg.form__footerImg {
-      width: 2.6rem;
-      height: 2.6rem;
-  }
-
-  .modal__btn.modal__btn {
-    font-size: 0.9rem;
-  }
-
-  .modal__description.modal__description {
-    font-size: 0.95rem;
   }
 }
