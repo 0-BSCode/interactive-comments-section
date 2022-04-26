@@ -62,26 +62,3 @@ function App() {
 }
 
 export default App;
-
-
-/*
-
-LEARNINGS:
-1. Dynamic image imports (place them in public folder)
-2. Dialog tag in HTML for modals
-3. Managing complicated data in redux (updating object = overriding old object instead of changing specific properties)
-4. Complex conditional rendering
-  - Elements can be stored in a variable and that's what's passed in render
-  - See Footer component
-5. How to use textarea
-6. Access global redux states from non-component functions
-7. Pass states to utility functions for clean code
-8. Render components based on screen size
-9. Stylesheets overriding each other despite not being used as an import
-10. Sending objects via express patch
-
-TO-DO:
-
-1. Work on README
-
-*/
