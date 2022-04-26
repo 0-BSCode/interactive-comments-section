@@ -77,4 +77,4 @@ Users should be able to:
 
 - GitHub - [0-BSCode](https://github.com/0-BSCode)
 - Frontend Mentor - [@0-BSCode](https://www.frontendmentor.io/profile/0-BSCode)
-- LinkedIn - [Bryan Sanchez](https://www.facebook.com/BryanSanchez1024/)
+- LinkedIn - [Bryan Sanchez](https://www.linkedin.com/in/bryan-sanchez-b316b7203/)
